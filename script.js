@@ -1,142 +1,108 @@
-let imagens = new Array;
+// ARRAY COM TODOS OS ELEMENTOS
+let galeria = [];
 
-imagens[0] = "/img/bomba.png";
-imagens[1] = "/img/Ship-1.png";
-imagens[2] = "/img/Ship-2.png";
-imagens[3] = "/img/Ship-3.png";
-imagens[4] = "/img/Wave.png";
-imagens[5] = "/img/bomba.png";
-imagens[6] = "/img/Ship-1.png";
-imagens[7] = "/img/Ship-2.png";
-imagens[8] = "/img/Ship-3.png";
-imagens[9] = "/img/Wave.png";
-imagens[10] = "/img/bomba.png";
-imagens[11] = "/img/Ship-1.png";
-imagens[12] = "/img/Ship-2.png";
-imagens[13] = "/img/Ship-3.png";
-imagens[14] = "/img/Wave.png";
-imagens[15] = "/img/bomba.png";
-imagens[16] = "/img/Ship-1.png";
-imagens[17] = "/img/Ship-2.png";
-imagens[18] = "/img/Ship-3.png";
-imagens[19] = "/img/Wave.png";
-imagens[20] = "/img/bomba.png";
-imagens[21] = "/img/Ship-1.png";
-imagens[22] = "/img/Ship-2.png";
-imagens[23] = "/img/Ship-3.png";
-imagens[24] = "/img/Wave.png";
-imagens[25] = "/img/bomba.png";
-imagens[26] = "/img/Ship-1.png";
-imagens[27] = "/img/Ship-2.png";
-imagens[28] = "/img/Ship-3.png";
-imagens[29] = "/img/Wave.png";
-imagens[30] = "/img/bomba.png";
-imagens[31] = "/img/Ship-1.png";
-imagens[32] = "/img/Ship-2.png";
-imagens[33] = "/img/Ship-3.png";
-imagens[34] = "/img/Wave.png";
-imagens[35] = "/img/bomba.png";
-imagens[36] = "/img/Ship-1.png";
-imagens[37] = "/img/Ship-2.png";
-imagens[38] = "/img/Ship-3.png";
-imagens[39] = "/img/Wave.png";
-imagens[40] = "/img/bomba.png";
-imagens[41] = "/img/Ship-1.png";
-imagens[42] = "/img/Ship-2.png";
-imagens[43] = "/img/Ship-3.png";
-imagens[44] = "/img/Wave.png";
-imagens[45] = "/img/bomba.png";
-imagens[46] = "/img/Ship-1.png";
-imagens[47] = "/img/Ship-2.png";
-imagens[48] = "/img/Ship-3.png";
-imagens[49] = "/img/Wave.png";
-imagens[50] = "/img/bomba.png";
-imagens[51] = "/img/Ship-1.png";
-imagens[52] = "/img/Ship-2.png";
-imagens[53] = "/img/Ship-3.png";
-imagens[54] = "/img/Wave.png";
-imagens[55] = "/img/bomba.png";
-imagens[56] = "/img/Ship-1.png";
-imagens[57] = "/img/Ship-2.png";
-imagens[58] = "/img/Ship-3.png";
-imagens[59] = "/img/Wave.png";
-imagens[60] = "/img/bomba.png";
-imagens[61] = "/img/Ship-1.png";
-imagens[62] = "/img/Ship-2.png";
-imagens[63] = "/img/Ship-3.png";
-imagens[64] = "/img/Wave.png";
-imagens[65] = "/img/bomba.png";
-imagens[66] = "/img/Ship-1.png";
-imagens[67] = "/img/Ship-2.png";
-imagens[68] = "/img/Ship-3.png";
-imagens[69] = "/img/Wave.png";
-imagens[70] = "/img/bomba.png";
-imagens[71] = "/img/Ship-1.png";
-imagens[72] = "/img/Ship-2.png";
-imagens[73] = "/img/Ship-3.png";
-imagens[74] = "/img/Wave.png";
-imagens[75] = "/img/bomba.png";
-imagens[76] = "/img/Ship-1.png";
-imagens[77] = "/img/Ship-2.png";
-imagens[78] = "/img/Ship-3.png";
-imagens[79] = "/img/Wave.png";
-imagens[80] = "/img/bomba.png";
-imagens[81] = "/img/Ship-1.png";
-imagens[82] = "/img/Ship-2.png";
-imagens[83] = "/img/Ship-3.png";
-imagens[84] = "/img/Wave.png";
-imagens[85] = "/img/bomba.png";
-imagens[86] = "/img/Ship-1.png";
-imagens[87] = "/img/Ship-2.png";
-imagens[88] = "/img/Ship-3.png";
-imagens[89] = "/img/Wave.png";
-imagens[90] = "/img/bomba.png";
-imagens[91] = "/img/Ship-1.png";
-imagens[92] = "/img/Ship-2.png";
-imagens[93] = "/img/Ship-3.png";
-imagens[94] = "/img/Wave.png";
-imagens[95] = "/img/bomba.png";
-imagens[96] = "/img/Ship-1.png";
-imagens[97] = "/img/Ship-2.png";
-imagens[98] = "/img/Ship-3.png";
-imagens[99] = "/img/Wave.png";
-imagens[100] = "/img/Fire-icon.png";
+// 35 bombas
+for(let i = 0; i < 35; i++){
+    galeria.push("img/bomba.png");
+}
 
-function criar_jogo(){
-    let id = document.getElementById("jogo");
-    let table = document.createElement("table");
-    table.style.gap = "1vh";
+// 35 águas
+for(let i = 0; i < 35; i++){
+    galeria.push("img/Wave.png");
+}
+
+// 10 barcos 1
+for(let i = 0; i < 10; i++){
+    galeria.push("img/Ship-1.png");
+}
+
+// 10 barcos 2
+for(let i = 0; i < 10; i++){
+    galeria.push("img/Ship-2.png");
+}
+
+// 10 barcos 3
+for(let i = 0; i < 10; i++){
+    galeria.push("img/Ship-3.png");
+}
+
+
+
+function criartabela() {
+
+    let tabela = document.createElement("table");
+
+    let cenario = document.getElementById("exibirjogo");
+
+    // limpa tabela antiga
+    cenario.innerHTML = "";
+
+    // contador para percorrer array
     let contador = 0;
-    for (let i=0;i<10;i++){
-       let tr = document.createElement("tr");
-        table.appendChild(tr);
-        tr.style.width = "500px";
-        tr.style.height = "60px";
-        for(let j=0;j<10;j++){
-            contador++;
-            let td = document.createElement("td");
-            let img = document.createElement("img");
-            img.className = "img_traseira";
-            let img_primaria = document.createElement("img");
-            img_primaria.className = "img_primaria";
 
-            img.src = imagens[contador - 1];
-            img.style.display = "none";
-            
-            img_primaria.src = imagens[100];
+    for(let i = 0; i < 10; i++) {
+
+        let linha = document.createElement("tr");
+
+        tabela.appendChild(linha);
+
+        for(let j = 0; j < 10; j++) {
+
+            let celula = document.createElement("td");
+
+            linha.appendChild(celula);
+
+            // ---------------------------------
+            // IMAGEM ESCONDIDA
+            // ---------------------------------
+
+            let img_secundaria = document.createElement("img");
+
+            img_secundaria.src = galeria[contador];
+
+            contador++;
+
+            img_secundaria.style.display = "none";
+
+            img_secundaria.style.width = "50px";
+
+            img_secundaria.style.height = "50px";
+
+            celula.appendChild(img_secundaria);
+
+            // ---------------------------------
+            // IMAGEM FIRE
+            // ---------------------------------
+
+            let img_primaria = document.createElement("img");
+
+            img_primaria.src = "img/Fire-icon.png";
+
+            img_primaria.style.width = "50px";
+
+            img_primaria.style.height = "50px";
+
             img_primaria.id = i + "-" + j;
-            img_primaria.onclick = function(){
-                let id = document.getElementById(i + "-" + j);
-                img.style.display = "block";
-                id.style.display = "none";
+
+            // ---------------------------------
+            // EVENTO DE CLIQUE
+            // ---------------------------------
+
+            img_primaria.onclick = function() {
+
+                img_primaria.style.display = "none";
+
+                img_secundaria.style.display = "block";
             };
-            td.appendChild(img);
-            td.appendChild(img_primaria);
-            tr.appendChild(td);
+
+            celula.appendChild(img_primaria);
         }
     }
-    id.appendChild(table);
+    
 
-    let botao = document.getElementById("Iniciar_jogo");
-    botao.style.display = "none";
+    cenario.appendChild(tabela);
+   
+
 }
+
+        
