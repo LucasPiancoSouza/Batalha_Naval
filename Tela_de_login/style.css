@@ -1,0 +1,30 @@
+body {
+    margin:0;
+    padding:0;
+    background-image: url(guerra_caravelas.jpeg);
+    background-size: cover;        
+    background-position: center;  
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+    height:100vh;
+}
+
+.container {
+    background-color: black;
+    border-radius: 3vh;
+    padding: 30px;
+    width:50vh;
+    height:50vh;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+#input-1 {
+background-color:blue;
+  margin-bottom:10px;
+}
