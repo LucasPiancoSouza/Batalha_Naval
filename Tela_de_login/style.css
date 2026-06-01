@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(0,0,0,0.40),
+            rgba(0,0,0,0.40)
+        ),
+        url(guerra_caravelas.jpeg);
+    backdrop-filter: blur(2.3px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    background-color: rgba(139, 139, 139, 0.7);;
+    border-radius: 3vh;
+    padding: 30px;
+    width:50vh;
+    height:50vh;
+    display:flex;
+    flex-direction:column;
+    border:solid black;
+}
+
+#input-1 {
+width: 97%;
+    padding: 14px 16px;
+    font-size: 16px;
+    color: white; 
+    background-color: #D9D9D9; 
+    border: 2px solid #333333;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    margin-left:5px;
+  
+}
+.botao_entrar {
+    width:80%;
+   margin-left:30px;
+   margin-top:80px;
+   padding:14px;
+   border-radius:10px;
+   border: 2px solid #333333;
+   background-color: #Dd0000;
+   color: white; 
+   outline:none;
+   font-size: 16px;
+   box-sizing: border-box;
+}
+.texto {
+    font-size:30px;
+    font-style:italic;
+    margin-left:56px;
+    font-family: "Trade Winds", sans-serif;
+}
