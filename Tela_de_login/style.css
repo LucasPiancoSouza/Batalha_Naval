@@ -7,7 +7,7 @@ body {
             rgba(0,0,0,0.40),
             rgba(0,0,0,0.40)
         ),
-        url(guerra_caravelas.jpeg);
+        url(img/guerra_caravelas.jpeg);
     backdrop-filter: blur(2.3px);
     background-size: cover;
     background-position: center;
@@ -21,7 +21,7 @@ body {
 }
 
 .container {
-    background-color: rgba(139, 139, 139, 0.7);;
+    background-color: rgba(139, 139, 139);;
     border-radius: 3vh;
     padding: 30px;
     width:50vh;
@@ -29,13 +29,14 @@ body {
     display:flex;
     flex-direction:column;
     border:solid black;
+    z-index: 10;
 }
 
 #input-1 {
 width: 97%;
     padding: 14px 16px;
     font-size: 16px;
-    color: white; 
+    color: rgb(0, 0, 0); 
     background-color: #D9D9D9; 
     border: 2px solid #333333;
     border-radius: 8px;
@@ -43,6 +44,7 @@ width: 97%;
     transition: all 0.3s ease;
     box-sizing: border-box;
     margin-left:5px;
+    font-weight:bold;
   
 }
 .botao_entrar {
@@ -57,10 +59,34 @@ width: 97%;
    outline:none;
    font-size: 16px;
    box-sizing: border-box;
+   font-weight:bold;
 }
 .texto {
     font-size:30px;
     font-style:italic;
-    margin-left:56px;
+    text-align: center;
     font-family: "Trade Winds", sans-serif;
+}
+
+.espada {
+    position: absolute;
+    width: 58vh;  
+    height: 58vh;
+    background-image: url(img/espada_curvada.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 5;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+}
+
+.espada-dir {
+    top: 50%;
+    left: 50%;
+transform-origin: center top;
+    
+    /* Faz exatamente o inverso: valor positivo (5%) para jogar para a direita,
+       rotação negativa para inclinar para o outro lado, e o scaleX para espelhar o cabo */
+    transform: translate(5%, -45%) rotate(-40deg) scaleX(-1);
 }

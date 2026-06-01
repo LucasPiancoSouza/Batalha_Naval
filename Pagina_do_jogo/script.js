@@ -25,9 +25,9 @@ for(let i = 0; i < 10; i++){
 for(let i = 0; i < 10; i++){
     galeria.push("img/Ship-3.png");
 }
+document.addEventListener('DOMContentLoaded', criartabela);
 
-
-window.onload = function criartabela(){ 
+function criartabela(){ 
 
     let tabela = document.createElement("table");
 
