@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body {
+    width: 100%;
+    min-height: 100%;
+}
+
+.container {
+    min-height: 100vh;
+    
+}
+
+.div_menu div {
+    width: 20vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 1vw;
+}
+.div_menu{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+    position: fixed;
+    background-color: rgba(217, 217, 217, 0.8);
+    z-index: 10;
+    
+}
+.menu, .menu2{
+    width: 3vw;
+    height: 5vh;
+    position: fixed;
+    top: 1vh;
+    left: 1vw;
+    z-index: 5;
+}
+.exibirjogo{
+    width: auto;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.btn_continuar, .btn_voltar_para_menu{
+    width: 10vw;
+    height: 5vh;
+    border-radius: 0.5vw;
+    border: none;
+}
+.btn_continuar{
+    background-color: green;
+    color: white;
+}
+.btn_voltar_para_menu{
+    background-color: red;
+    color: white;
+}
