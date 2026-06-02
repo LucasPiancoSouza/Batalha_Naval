@@ -26,6 +26,12 @@ for(let i = 0; i < 10; i++){
     galeria.push("img/Ship-3.png");
 }
 document.addEventListener('DOMContentLoaded', criartabela);
+document.addEventListener('DOMContentLoaded', regras);
+
+function regras(){
+    let div_regras = document.getElementById("regras");
+    div_regras.style.display = "flex";
+}
 
 function criartabela(){ 
 

@@ -35,7 +35,7 @@ html,body {
     z-index: 10;
     
 }
-.menu, .menu2{
+.menu{
     width: 3vw;
     height: 5vh;
     position: fixed;
@@ -64,4 +64,26 @@ html,body {
 .btn_voltar_para_menu{
     background-color: red;
     color: white;
+}
+/*regras*/
+.regras{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+}
+.regras div{
+    width: 30vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(217, 217, 217, 0.8);
+    border-radius: 1vw;
 }
