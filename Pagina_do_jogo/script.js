@@ -32,6 +32,10 @@ function regras(){
     let div_regras = document.getElementById("regras");
     div_regras.style.display = "flex";
 }
+function fechar_regras(){
+    let id = document.getElementById("regras");
+    id.style.display = "none";
+}
 
 function criartabela(){ 
 

@@ -10,6 +10,7 @@
 </head>
 <body>     
 <div class="container">
+    
     <img src="img/menu.png" alt="Menu" class="menu" onclick="menu()" id="img_menu">
     <div id="exibirjogo" class="exibirjogo">
         <div id="div_menu" class="div_menu" style="display: none;" onclick="fechar_menu()">
@@ -19,17 +20,21 @@
                 <button id="btn_voltar_para_menu" class="btn_voltar_para_menu">Menu Principal</button>
             </div>
         </div>
-        <div class="regras" id="regras" style="display: none;">
-        <strong>Como Jogar:</strong>
-        <br>
-        <div>
-        <p>Clique nos blocos para revelar o que está escondido na frente:</p>
-        <ul>
-            <li>⚓ <strong>Barco:</strong> Você ganha 10 pontos.</li>
-            <li>💧 <strong>Água:</strong> Não ganha e não perde pontos.</li>
-            <li>💣 <strong>Bomba:</strong> Você perde 1 vida. Cuidado!</li>
-        </ul>
-        </div>
+    <div class="regras" id="regras" style="display: none;" onclick="fechar_regras()">
+        
+            <div class="div_regras">
+                <h2>Como Jogar?</h2>
+                <br>
+                 <p>Clique nos blocos para revelar o que está escondido na frente:</p>
+                <br>
+                <ul>
+                    <li>⚓ <strong>Barco:</strong> Você ganha 10 pontos.</li>
+                    <li>💧 <strong>Água:</strong> Não ganha e não perde pontos.</li>
+                    <li>💣 <strong>Bomba:</strong> Você perde 1 vida. Cuidado!</li>
+                </ul>
+                <br>
+                <button id="btn_fechar_regras" class="btn_fechar_regras" onclick="fechar_regras()">Fechar</button>
+            </div>
     </div>
     </div>
 </div>

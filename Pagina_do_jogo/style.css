@@ -1,7 +1,12 @@
+:root{
+    --fonte-titulo: "Russo One",sans-serif;
+    --fonte_paragrafo: "Open Sans",sans-serif;
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 html,body {
@@ -60,10 +65,12 @@ html,body {
 .btn_continuar{
     background-color: green;
     color: white;
+    font-family: var(--fonte_paragrafo);
 }
 .btn_voltar_para_menu{
     background-color: red;
     color: white;
+    font-family: var(--fonte_paragrafo);
 }
 /*regras*/
 .regras{
@@ -76,14 +83,36 @@ html,body {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 10;
+    flex-direction: column;
 }
 .regras div{
-    width: 30vw;
-    height: 30vh;
+    width: 35vw;
+    height: 35vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: rgba(217, 217, 217, 0.8);
     border-radius: 1vw;
+    font-family: var(--fonte_paragrafo);
+}
+.regras h2{
+    color: black;
+    font-family: var(--fonte-titulo);
+}
+.regras p{
+    font-size: 1.15vw;
+    font-family: var(--fonte_paragrafo);
+}
+.regras ul{
+    list-style: none;
+}
+.btn_fechar_regras{
+    width: 10vw;
+    height: 5vh;
+    border-radius: 0.5vw;
+    border: none;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    font-family: var(--fonte_paragrafo);
 }
