@@ -7,7 +7,7 @@ body {
             rgba(0,0,0,0.40),
             rgba(0,0,0,0.40)
         ),
-        url(guerra_caravelas.jpeg);
+        url(img/guerra_caravelas.jpeg);
     backdrop-filter: blur(2.3px);
     background-size: cover;
     background-position: center;
@@ -29,13 +29,14 @@ body {
     display:flex;
     flex-direction:column;
     border:solid black;
+    z-index: 10;
 }
 
 #input-1 {
 width: 97%;
     padding: 14px 16px;
     font-size: 16px;
-    color: white; 
+    color: rgb(0, 0, 0); 
     background-color: #D9D9D9; 
     border: 2px solid #333333;
     border-radius: 8px;
@@ -43,6 +44,7 @@ width: 97%;
     transition: all 0.3s ease;
     box-sizing: border-box;
     margin-left:5px;
+    font-weight:bold;
   
 }
 .botao_entrar {
@@ -57,11 +59,12 @@ width: 97%;
    outline:none;
    font-size: 16px;
    box-sizing: border-box;
+   font-weight:bold;
 }
 .texto {
     font-size:30px;
     font-style:italic;
-    margin-left:56px;
+    text-align: center;
     font-family: "Trade Winds", sans-serif;
 }
 .espadas-background {

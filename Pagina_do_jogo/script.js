@@ -25,17 +25,23 @@ for(let i = 0; i < 10; i++){
 for(let i = 0; i < 10; i++){
     galeria.push("img/Ship-3.png");
 }
+document.addEventListener('DOMContentLoaded', criartabela);
+document.addEventListener('DOMContentLoaded', regras);
 
+function regras(){
+    let div_regras = document.getElementById("regras");
+    div_regras.style.display = "flex";
+}
+function fechar_regras(){
+    let id = document.getElementById("regras");
+    id.style.display = "none";
+}
 
-
-function criartabela() {
+function criartabela(){ 
 
     let tabela = document.createElement("table");
 
     let cenario = document.getElementById("exibirjogo");
-
-    // limpa tabela antiga
-    cenario.innerHTML = "";
 
     // contador para percorrer array
     let contador = 0;
@@ -103,6 +109,21 @@ function criartabela() {
     cenario.appendChild(tabela);
    
 
+}
+
+/*Menu*/
+
+function menu(){
+   const menu = document.getElementById("div_menu"); 
+   menu.style.display = "flex";
+   const menu_img = document.getElementById("img_menu");
+   menu_img.style.display = "none";
+}
+function fechar_menu(){
+    const menu = document.getElementById("div_menu"); 
+    menu.style.display = "none";
+    const menu_img = document.getElementById("img_menu");
+    menu_img.style.display = "block";
 }
 
         
