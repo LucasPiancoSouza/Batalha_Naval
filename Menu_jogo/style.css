@@ -1,3 +1,9 @@
+html, body{
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -8,7 +14,8 @@ body{
 
 .container{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,6 +31,9 @@ body{
     border-radius: 0.5vw;
 }
 .iniciar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 5vh;
     width: 15vw;
     height: 9vh;
@@ -40,6 +50,12 @@ body{
     font-size: 1.2vw;
 }
 @media (max-width: 480px){
+    html, body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
     body{
     margin: 0;
     padding: 0;
@@ -49,18 +65,31 @@ body{
 }
     .container{
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
+    position: fixed;
+    inset: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    padding-top: 18vh;
+    box-sizing: border-box;
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.5);
+}
+    .menu_iniciar{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
     .Titulo{
     font-size: 6vh;
     color:white;
 }
     .iniciar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 5vh;
     width: 40vw;
     height: 9vh;
@@ -74,5 +103,36 @@ body{
 }
 }
 @media (min-width: 481px) and (max-width: 767px) {
-
+    .iniciar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    width: 40vw;
+    height: 9vh;
+    border: none;
+    border-radius: 2vw;
+    background-color: rgba(184, 8, 8, 0.877);
+    color:white;
+}
+.iniciar p{
+    font-size: 5.5vw;
+}
+}
+@media (min-width: 767px) and (max-width: 1023px) {
+    .iniciar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    width: 40vw;
+    height: 9vh;
+    border: none;
+    border-radius: 2vw;
+    background-color: rgba(184, 8, 8, 0.877);
+    color:white;
+}
+.iniciar p{
+    font-size: 5.5vw;
+}   
 }

@@ -125,5 +125,7 @@ function fechar_menu(){
     const menu_img = document.getElementById("img_menu");
     menu_img.style.display = "block";
 }
-
+function mudar_para_menu(){
+    window.location.href = "../Menu_jogo/index.html";
+}
         
