@@ -1,3 +1,12 @@
+:root{
+    --fonte-titulo: "Bebas Neue", sans-serif;
+    --peso-titulo: 400;
+    --estilo-titulo: normal;
+    --fonte-paragrafo : "Roboto Condensed", sans-serif;
+    --peso-paragrafo: 400;
+    --estilo-paragrafo: normal;
+    --tamanho-optico-paragrafo: auto;
+}
 html, body{
     width: 100%;
     min-height: 100%;
@@ -43,10 +52,17 @@ body{
     color:white;
 }
 .Titulo{
+    font-family: var(--fonte-titulo);
+    font-weight: var(--peso-titulo);
+    font-style: var(--estilo-titulo);
     font-size: 8vh;
     color:white;
 }
 .iniciar p{
+    font-family: var(--fonte-paragrafo);
+    font-optical-sizing: var(--tamanho-optico-paragrafo);
+    font-weight: var(--peso-paragrafo);
+    font-style: var(--estilo-paragrafo);
     font-size: 1.2vw;
 }
 @media (max-width: 480px){
@@ -99,7 +115,7 @@ body{
     color:white;
 }
 .iniciar p{
-    font-size: 5.5vw;
+    font-size: 5vw;
 }
 }
 @media (min-width: 481px) and (max-width: 767px) {
@@ -116,7 +132,7 @@ body{
     color:white;
 }
 .iniciar p{
-    font-size: 5.5vw;
+    font-size: 3vw;
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {
@@ -133,6 +149,6 @@ body{
     color:white;
 }
 .iniciar p{
-    font-size: 5.5vw;
+    font-size: 3vw;
 }   
 }

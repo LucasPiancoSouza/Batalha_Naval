@@ -23,8 +23,8 @@ body{
 }
 
 .div_menu div {
-    width: 20vw;
-    height: 20vh;
+    width: 35vw;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,10 +63,11 @@ body{
     z-index: 1;
 }
 .btn_continuar, .btn_voltar_para_menu{
-    width: 10vw;
-    height: 5vh;
+    width: 20vw;
+    height: 7vh;
     border-radius: 0.5vw;
     border: none;
+    font-size: 1.7vw;
 }
 .btn_continuar{
     background-color: green;
@@ -94,8 +95,8 @@ body{
     flex-direction: column;
 }
 .regras div{
-    width: 35vw;
-    height: 35vh;
+    width: 45vw;
+    height: 45vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -105,15 +106,20 @@ body{
     font-family: var(--fonte_paragrafo);
 }
 .regras h2{
+    font-size: 2.5vw;
     color: black;
     font-family: var(--fonte-titulo);
 }
 .regras p{
-    font-size: 1.15vw;
+    font-size: 1.5vw;
     font-family: var(--fonte_paragrafo);
 }
 .regras ul{
     list-style: none;
+}
+.regras ul li{
+    font-size: 1.6vw;
+    font-family: var(--fonte_paragrafo);
 }
 .btn_fechar_regras{
     width: 10vw;
@@ -126,246 +132,106 @@ body{
 }
 
 @media (max-width: 480px){
-    html,body {
-    width: 100%;
-    min-height: 100%;
-}
-    .div_menu{
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-    position: fixed;
-    inset: 0;
-}
-    .regras{
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1vh;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 10;
-    flex-direction: column;
-}
     .regras div{
     width: 85vw;
-    height: 45vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(217, 217, 217, 0.8);
     border-radius: 2vw;
-    font-family: var(--fonte_paragrafo);
+}
+.regras h2{
+    font-size: 4vh;
+}
+.regras ul li{
+    font-size: 2.2vh;
 }
 .regras p{
     text-align: center;
-    font-size: 2vh;
-    font-family: var(--fonte_paragrafo);
+    font-size: 2.5vh;
 }
 .btn_fechar_regras{
-    width: 20vw;
-    height: 5vh;
-    border-radius: 0.5vw;
-    border: none;
-    background-color: rgb(255, 0, 0);
-    color: white;
-    font-family: var(--fonte_paragrafo);
+    width: 40vw;
+    height: 7vh;
+    border-radius: 3vw;
+    font-size: 2.5vh;
 }
 .div_menu{
     width: 100%;
-    min-height: 100dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1vh;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(217, 217, 217, 0.8);
-    z-index: 10;
     flex-direction: column;
 }
 .div_menu div {
     width: 65vw;
     height: 35vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.85);
     border-radius: 2vw;
 }
 
 .btn_continuar, .btn_voltar_para_menu{
-    width: 20vw;
-    height: 5vh;
+    width: 40vw;
     border-radius: 1vw;
-    border: none;
+    font-size: 2.5vh;
 }
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
-    html,body {
-    width: 100%;
-    min-height: 100%;
-}
-    .div_menu{
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-    position: fixed;
-    inset: 0;
-}
-    .regras{
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1vh;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 10;
-    flex-direction: column;
-}
+@media (min-width: 481px) and (max-width: 768px) {
     .regras div{
     width: 75vw;
-    height: 45vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(217, 217, 217, 0.8);
     border-radius: 2vw;
-    font-family: var(--fonte_paragrafo);
+}
+.regras h2{
+    font-size: 4vh;
 }
 .regras p{
     text-align: center;
     font-size: 2vh;
-    font-family: var(--fonte_paragrafo);
+}
+.regras ul li{
+    font-size: 2vh;
 }
 .btn_fechar_regras{
     width: 20vw;
-    height: 5vh;
-    border-radius: 0.5vw;
-    border: none;
-    background-color: rgb(255, 0, 0);
-    color: white;
-    font-family: var(--fonte_paragrafo);
 }
 .div_menu{
     width: 100%;
-    min-height: 100dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1vh;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(217, 217, 217, 0.8);
-    z-index: 10;
     flex-direction: column;
 }
 .div_menu div {
     width: 55vw;
     height: 35vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.85);
     border-radius: 2vw;
 }
 .btn_continuar, .btn_voltar_para_menu{
-    width: 20vw;
-    height: 5vh;
+    width: 40vw;
     border-radius: 1vw;
-    border: none;
+    font-size: 2.5vh;
 }   
 }
 @media (min-width: 768px) and (max-width: 1023px) {
-    html,body {
-    width: 100%;
-    min-height: 100%;
-}
-    .div_menu{
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-    position: fixed;
-    inset: 0;
-}
-    .regras{
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1vh;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 10;
-    flex-direction: column;
-}
     .regras div{
     width: 65vw;
-    height: 45vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(217, 217, 217, 0.8);
     border-radius: 2vw;
-    font-family: var(--fonte_paragrafo);
-}.regras p{
+}
+.regras h2{
+    font-size: 4vh;
+}
+.regras p{
     text-align: center;
     font-size: 2.5vh;
-    font-family: var(--fonte_paragrafo);
+}
+.regras ul li{
+    font-size: 2.3vh;
 }
 .btn_fechar_regras{
     width: 20vw;
-    height: 5vh;
-    border-radius: 0.5vw;
-    border: none;
-    background-color: rgb(255, 0, 0);
-    color: white;
-    font-family: var(--fonte_paragrafo);
 }
 .div_menu{
     width: 100%;
-    min-height: 100dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1vh;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(217, 217, 217, 0.8);
-    z-index: 10;
     flex-direction: column;
 }
 .div_menu div {
-    width: 65vw;
+    width: 45vw;
     height: 35vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.85);
     border-radius: 2vw;
 }
 .btn_continuar, .btn_voltar_para_menu{
-    width: 20vw;
-    height: 5vh;
+    width: 25vw;
     border-radius: 1vw;
-    border: none;
+    font-size: 2.5vh;
 }   
 }
