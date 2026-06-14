@@ -21,40 +21,42 @@ body {
 }
 
 .container {
-    background-color: rgba(139, 139, 139);;
+    background: rgba(20, 24, 33, 0.6); /* Um azul bem escuro e cinzento */
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Uma bordinha sutil */
     border-radius: 3vh;
     padding: 30px;
-    width:50vh;
+    width:26%;
     height:50vh;
     display:flex;
     flex-direction:column;
-    border:solid black;
     z-index: 10;
 }
 
 #input-1 {
 width: 97%;
-    padding: 14px 16px;
-    font-size: 16px;
-    color: rgb(0, 0, 0); 
-    background-color: #D9D9D9; 
-    border: 2px solid #333333;
+   background-color: rgba(0, 0, 0, 0.4); 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    color: #ffffff;
+    padding: 12px 15px;
     border-radius: 8px;
+    font-size: 16px;
     outline: none;
     transition: all 0.3s ease;
-    box-sizing: border-box;
-    margin-left:5px;
     font-weight:bold;
   
 }
+.bloco_botoes {
+     display: flex;
+    justify-content: center;
+}
 .botao_entrar {
-    width:80%;
-   margin-left:30px;
-   margin-top:80px;
+    width:70%;
+    margin-top: 70px;
    padding:14px;
    border-radius:10px;
    border: 2px solid #333333;
-   background-color: #Dd0000;
+  background-color: #8B0000;
    color: white; 
    outline:none;
    font-size: 16px;
@@ -66,28 +68,42 @@ width: 97%;
     font-style:italic;
     text-align: center;
     font-family: "Trade Winds", sans-serif;
-}
-.espadas-background {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 580px; 
-  height:580px;
-  z-index: -1;
-  pointer-events: none;
-}
-.login-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  width: 100%;
-  overflow: visible;
-  
+    color:white;
 }
 
+/*celulares*/
 
-.espada-2 {
-  transform: translate(-50%, -50%) rotate(1deg) scaleX(-1);
+ @media (max-width: 576px) { 
+    .container {
+        width: 65%;   
+        height: auto;    
+    }
+}
+/*Celulares grandes/ tablets (retrato)*/
+@media (min-width: 577px) and (max-width:767px){
+     .container {
+        width:50%;
+        height:40%;
+    }
+}
+/*tablets grandes (Paisagem) */
+@media (min-width:768px) and (max-width:991px) {
+     .container {
+        width:45%;
+        height:45%;
+    }
+}
+/*laptops/monitores comuns*/
+@media (min-width:992px) and (max-width:1199px) {
+     .container {
+        width:45%;
+        height:45%;
+    }
+}
+/*desktops grandes/ telas 4k */ 
+@media (min-width:1200px) {
+     .container {
+        width:28%;
+        height:43%;
+    }
 }
