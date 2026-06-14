@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(0,0,0,0.40),
+            rgba(0,0,0,0.40)
+        ),
+        url(guerra_caravelas.jpeg);
+    backdrop-filter: blur(2.3px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    background: rgba(20, 24, 33, 0.6); /* Um azul bem escuro e cinzento */
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Uma bordinha sutil */
+    border-radius: 3vh;
+    padding: 30px;
+    width:26%;
+    height:50vh;
+    display:flex;
+    flex-direction:column;
+    z-index: 10;
+}
+
+#input-1 {
+width: 97%;
+   background-color: rgba(0, 0, 0, 0.4); 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    color: #ffffff;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-weight:bold;
+  
+}
+.bloco_botoes {
+     display: flex;
+    justify-content: center;
+}
+.botao_entrar {
+    width:70%;
+    margin-top: 70px;
+   padding:14px;
+   border-radius:10px;
+   border: 2px solid #333333;
+  background-color: #8B0000;
+   color: white; 
+   outline:none;
+   font-size: 16px;
+   box-sizing: border-box;
+   font-weight:bold;
+}
+.texto {
+    font-size:30px;
+    font-style:italic;
+    text-align: center;
+    font-family: "Trade Winds", sans-serif;
+    color:white;
+}
+
+/*celulares*/
+
+ @media (max-width: 576px) { 
+    .container {
+        width: 65%;   
+        height: auto;    
+    }
+}
+/*Celulares grandes/ tablets (retrato)*/
+@media (min-width: 577px) and (max-width:767px){
+     .container {
+        width:50%;
+        height:40%;
+    }
+}
+/*tablets grandes (Paisagem) */
+@media (min-width:768px) and (max-width:991px) {
+     .container {
+        width:45%;
+        height:45%;
+    }
+}
+/*laptops/monitores comuns*/
+@media (min-width:992px) and (max-width:1199px) {
+     .container {
+        width:45%;
+        height:45%;
+    }
+}
+/*desktops grandes/ telas 4k */ 
+@media (min-width:1200px) {
+     .container {
+        width:28%;
+        height:43%;
+    }
+}
