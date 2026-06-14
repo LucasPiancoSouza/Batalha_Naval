@@ -11,5 +11,5 @@ id.appendChild(formulario);
 }
 
 function entrar () {
-     window.location.href = "jogo.html";
+     window.location.href = "Menu_jogo/index.html";
 }
