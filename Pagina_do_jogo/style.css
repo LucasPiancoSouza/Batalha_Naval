@@ -13,14 +13,18 @@ html,body {
     width: 100%;
     min-height: 100%;
 }
-
+body{
+        background-image: url(img/guerra_caravelas.jpeg);
+        backdrop-filter: blur(2.5px);
+}
 .container {
     min-height: 100vh;
+    z-index: -1;
 }
 
 .div_menu div {
-    width: 20vw;
-    height: 20vh;
+    width: 35vw;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,12 +34,14 @@ html,body {
 }
 .div_menu{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1vh;
     position: fixed;
+    inset: 0;
     background-color: rgba(217, 217, 217, 0.8);
     z-index: 10;
     
@@ -57,10 +63,11 @@ html,body {
     z-index: 1;
 }
 .btn_continuar, .btn_voltar_para_menu{
-    width: 10vw;
-    height: 5vh;
+    width: 20vw;
+    height: 7vh;
     border-radius: 0.5vw;
     border: none;
+    font-size: 1.7vw;
 }
 .btn_continuar{
     background-color: green;
@@ -75,19 +82,21 @@ html,body {
 /*regras*/
 .regras{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1vh;
     position: fixed;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 10;
     flex-direction: column;
 }
 .regras div{
-    width: 35vw;
-    height: 35vh;
+    width: 45vw;
+    height: 45vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,15 +106,20 @@ html,body {
     font-family: var(--fonte_paragrafo);
 }
 .regras h2{
+    font-size: 2.5vw;
     color: black;
     font-family: var(--fonte-titulo);
 }
 .regras p{
-    font-size: 1.15vw;
+    font-size: 1.5vw;
     font-family: var(--fonte_paragrafo);
 }
 .regras ul{
     list-style: none;
+}
+.regras ul li{
+    font-size: 1.6vw;
+    font-family: var(--fonte_paragrafo);
 }
 .btn_fechar_regras{
     width: 10vw;
@@ -115,4 +129,109 @@ html,body {
     background-color: rgb(255, 0, 0);
     color: white;
     font-family: var(--fonte_paragrafo);
+}
+
+@media (max-width: 480px){
+    .regras div{
+    width: 85vw;
+    border-radius: 2vw;
+}
+.regras h2{
+    font-size: 4vh;
+}
+.regras ul li{
+    font-size: 2.2vh;
+}
+.regras p{
+    text-align: center;
+    font-size: 2.5vh;
+}
+.btn_fechar_regras{
+    width: 40vw;
+    height: 7vh;
+    border-radius: 3vw;
+    font-size: 2.5vh;
+}
+.div_menu{
+    width: 100%;
+    flex-direction: column;
+}
+.div_menu div {
+    width: 65vw;
+    height: 35vh;
+    border-radius: 2vw;
+}
+
+.btn_continuar, .btn_voltar_para_menu{
+    width: 40vw;
+    border-radius: 1vw;
+    font-size: 2.5vh;
+}
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .regras div{
+    width: 75vw;
+    border-radius: 2vw;
+}
+.regras h2{
+    font-size: 4vh;
+}
+.regras p{
+    text-align: center;
+    font-size: 2vh;
+}
+.regras ul li{
+    font-size: 2vh;
+}
+.btn_fechar_regras{
+    width: 20vw;
+}
+.div_menu{
+    width: 100%;
+    flex-direction: column;
+}
+.div_menu div {
+    width: 55vw;
+    height: 35vh;
+    border-radius: 2vw;
+}
+.btn_continuar, .btn_voltar_para_menu{
+    width: 40vw;
+    border-radius: 1vw;
+    font-size: 2.5vh;
+}   
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    .regras div{
+    width: 65vw;
+    border-radius: 2vw;
+}
+.regras h2{
+    font-size: 4vh;
+}
+.regras p{
+    text-align: center;
+    font-size: 2.5vh;
+}
+.regras ul li{
+    font-size: 2.3vh;
+}
+.btn_fechar_regras{
+    width: 20vw;
+}
+.div_menu{
+    width: 100%;
+    flex-direction: column;
+}
+.div_menu div {
+    width: 45vw;
+    height: 35vh;
+    border-radius: 2vw;
+}
+.btn_continuar, .btn_voltar_para_menu{
+    width: 25vw;
+    border-radius: 1vw;
+    font-size: 2.5vh;
+}   
 }

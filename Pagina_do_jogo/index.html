@@ -8,7 +8,9 @@
     <script src="script.js"></script>
 
 </head>
-<body>     
+<body>
+
+        
 <div class="container">
     
     <img src="img/menu.png" alt="Menu" class="menu" onclick="menu()" id="img_menu">
@@ -17,7 +19,7 @@
             <div>
                 <button id="btn_continuar" class="btn_continuar" onclick="fechar_menu()">Continuar</button>
                 <br>
-                <button id="btn_voltar_para_menu" class="btn_voltar_para_menu">Menu Principal</button>
+                <button id="btn_voltar_para_menu" class="btn_voltar_para_menu" onclick="mudar_para_menu()">Menu Principal</button>
             </div>
         </div>
     <div class="regras" id="regras" style="display: none;" onclick="fechar_regras()">
@@ -38,6 +40,5 @@
     </div>
     </div>
 </div>
-
 </body>
 </html>

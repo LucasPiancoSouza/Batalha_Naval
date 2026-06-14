@@ -21,9 +21,13 @@ body {
 }
 
 .container {
+<<<<<<< HEAD:Tela_de_login/style.css
     background: rgba(20, 24, 33, 0.6); /* Um azul bem escuro e cinzento */
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1); /* Uma bordinha sutil */
+=======
+    background-color: rgba(139, 139, 139);
+>>>>>>> 2fdc1d6a725ff13a9ecc4bf8642e3619aab6cb8a:style.css
     border-radius: 3vh;
     padding: 30px;
     width:26%;
