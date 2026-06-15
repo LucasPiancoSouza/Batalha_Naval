@@ -14,8 +14,17 @@ html,body {
     min-height: 100%;
 }
 body{
-        background-image: url(img/guerra_caravelas.jpeg);
-        backdrop-filter: blur(2.5px);
+    background-image: url(../img/jogo.jpg);
+    backdrop-filter: blur(2.5px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
 .container {
     min-height: 100vh;
@@ -55,12 +64,13 @@ body{
     z-index: 5;
 }
 .exibirjogo{
-    width: auto;
+    width: 50vw;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
+    background-color: rgba(128, 128, 128, 0.411);
 }
 .btn_continuar, .btn_voltar_para_menu{
     width: 20vw;

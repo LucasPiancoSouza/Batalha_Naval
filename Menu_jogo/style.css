@@ -16,7 +16,7 @@ html, body{
 body{
     margin: 0;
     padding: 0;
-    background-image: url(img/guerra_caravelas.jpeg);
+    background-image: url(../img/Barcos.png);
     backdrop-filter: blur(2.5px);
     overflow: hidden;
 }
