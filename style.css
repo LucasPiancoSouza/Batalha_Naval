@@ -7,7 +7,7 @@ body {
             rgba(0,0,0,0.40),
             rgba(0,0,0,0.40)
         ),
-        url(guerra_caravelas.jpeg);
+        url(img/guerra_caravelas.jpeg);
     backdrop-filter: blur(2.3px);
     background-size: cover;
     background-position: center;
