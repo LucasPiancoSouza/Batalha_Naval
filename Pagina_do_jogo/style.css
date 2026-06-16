@@ -1,11 +1,16 @@
 :root{
-  --fonte-titulo: "Russo One", sans-serif;
-  --fonte-paragrafo: "Open Sans", sans-serif;
   --bg-overlay: rgba(0, 0, 0, 0.8);
   --panel-bg: rgba(217, 217, 217, 0.95);
   --button-radius: 0.75rem;
   --button-padding: 0.9rem 1.5rem;
   --button-font: 1rem;
+  --fonte-titulo: "Bebas Neue", sans-serif;
+  --peso-titulo: 400;
+  --estilo-titulo: normal;
+  --fonte-paragrafo : "Roboto Condensed", sans-serif;
+  --peso-paragrafo: 400;
+  --estilo-paragrafo: normal;
+  --tamanho-optico-paragrafo: auto;
 }
 *{
   margin: 0;
@@ -19,7 +24,7 @@ html, body {
 }
 body{
   font-family: var(--fonte-paragrafo);
-  background-image: url(../img/fundo_jogo.png);
+  background-image: url(../img/fundo_tela_do_jogo.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -145,6 +150,7 @@ body{
   border: none;
   font-size: var(--button-font);
   cursor: pointer;
+  font-family: var(--fonte-paragrafo);
 }
 
 .botao-continuar {

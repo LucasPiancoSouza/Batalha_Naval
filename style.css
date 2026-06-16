@@ -1,3 +1,12 @@
+:root{
+    --fonte-titulo: "Bebas Neue", sans-serif;
+    --peso-titulo: 400;
+    --estilo-titulo: normal;
+    --fonte-paragrafo : "Roboto Condensed", sans-serif;
+    --peso-paragrafo: 400;
+    --estilo-paragrafo: normal;
+    --tamanho-optico-paragrafo: auto;
+}
 body {
     margin: 0;
     padding: 0;
@@ -7,8 +16,7 @@ body {
             rgba(0,0,0,0.40),
             rgba(0,0,0,0.40)
         ),
-        url(img/guerra_caravelas.jpeg);
-    backdrop-filter: blur(2.3px);
+        url(img/fundo_tela_de_login.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -65,9 +73,8 @@ width: 97%;
 }
 .texto {
     font-size:30px;
-    font-style:italic;
     text-align: center;
-    font-family: "Trade Winds", sans-serif;
+    font-family: var(--fonte-titulo);
     color:white;
 }
 
