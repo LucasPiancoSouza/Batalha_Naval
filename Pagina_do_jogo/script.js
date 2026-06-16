@@ -1,131 +1,103 @@
 // ARRAY COM TODOS OS ELEMENTOS
-let galeria = [];
+const galeria = [];
 
-// 35 bombas
-for(let i = 0; i < 35; i++){
-    galeria.push("img/bomba.png");
+for (let i = 0; i < 35; i++) {
+  galeria.push('img/bomba.png');
 }
 
-// 35 águas
-for(let i = 0; i < 35; i++){
-    galeria.push("img/Wave.png");
+for (let i = 0; i < 35; i++) {
+  galeria.push('img/Wave.png');
 }
 
-// 10 barcos 1
-for(let i = 0; i < 10; i++){
-    galeria.push("img/Ship-1.png");
+for (let i = 0; i < 10; i++) {
+  galeria.push('img/Ship-1.png');
 }
 
-// 10 barcos 2
-for(let i = 0; i < 10; i++){
-    galeria.push("img/Ship-2.png");
+for (let i = 0; i < 10; i++) {
+  galeria.push('img/Ship-2.png');
 }
 
-// 10 barcos 3
-for(let i = 0; i < 10; i++){
-    galeria.push("img/Ship-3.png");
-}
-document.addEventListener('DOMContentLoaded', criartabela);
-document.addEventListener('DOMContentLoaded', regras);
-
-function regras(){
-    let div_regras = document.getElementById("regras");
-    div_regras.style.display = "flex";
-}
-function fechar_regras(){
-    let id = document.getElementById("regras");
-    id.style.display = "none";
+for (let i = 0; i < 10; i++) {
+  galeria.push('img/Ship-3.png');
 }
 
-function criartabela(){ 
+document.addEventListener('DOMContentLoaded', () => {
+  criartabela();
+  configurarEventos();
+  exibirRegras();
+});
 
-    let tabela = document.createElement("table");
+function configurarEventos() {
+  const botaoAbrirMenu = document.getElementById('btnAbrirMenu');
+  const botaoFecharRegras = document.getElementById('btnFecharRegras');
+  const botaoContinuar = document.getElementById('btnContinuar');
+  const botaoVoltarMenu = document.getElementById('btnVoltarMenu');
 
-    let cenario = document.getElementById("exibirjogo");
+  botaoAbrirMenu.addEventListener('click', menu);
+  botaoFecharRegras.addEventListener('click', fecharRegras);
+  botaoContinuar.addEventListener('click', fecharMenu);
+  botaoVoltarMenu.addEventListener('click', mudarParaMenu);
+}
 
-    // contador para percorrer array
-    let contador = 0;
+function exibirRegras() {
+  const regrasSobreposicao = document.getElementById('regras-sobreposicao');
+  regrasSobreposicao.classList.remove('oculto');
+  regrasSobreposicao.setAttribute('aria-hidden', 'false');
+}
 
-    for(let i = 0; i < 10; i++) {
+function fecharRegras() {
+  const regrasSobreposicao = document.getElementById('regras-sobreposicao');
+  regrasSobreposicao.classList.add('oculto');
+}
 
-        let linha = document.createElement("tr");
+function criartabela() {
+  const tabela = document.createElement('table');
+  const cenario = document.getElementById('tabuleiro-jogo');
+  let contador = 0;
 
-        tabela.appendChild(linha);
+  for (let i = 0; i < 10; i++) {
+    const linha = document.createElement('tr');
+    tabela.appendChild(linha);
 
-        for(let j = 0; j < 10; j++) {
+    for (let j = 0; j < 10; j++) {
+      const celula = document.createElement('td');
+      linha.appendChild(celula);
 
-            let celula = document.createElement("td");
+      const imgSegunda = document.createElement('img');
+      imgSegunda.src = galeria[contador];
+      contador += 1;
+      imgSegunda.classList.add('tile-tras', 'oculto');
+      celula.appendChild(imgSegunda);
 
-            linha.appendChild(celula);
-
-            // ---------------------------------
-            // IMAGEM ESCONDIDA
-            // ---------------------------------
-
-            let img_secundaria = document.createElement("img");
-
-            img_secundaria.src = galeria[contador];
-
-            contador++;
-
-            img_secundaria.style.display = "none";
-
-            img_secundaria.style.width = "50px";
-
-            img_secundaria.style.height = "50px";
-
-            celula.appendChild(img_secundaria);
-
-            // ---------------------------------
-            // IMAGEM FIRE
-            // ---------------------------------
-
-            let img_primaria = document.createElement("img");
-
-            img_primaria.src = "img/Fire-icon.png";
-
-            img_primaria.style.width = "50px";
-
-            img_primaria.style.height = "50px";
-
-            img_primaria.id = i + "-" + j;
-
-            // ---------------------------------
-            // EVENTO DE CLIQUE
-            // ---------------------------------
-
-            img_primaria.onclick = function() {
-
-                img_primaria.style.display = "none";
-
-                img_secundaria.style.display = "block";
-            };
-
-            celula.appendChild(img_primaria);
-        }
+      const imgPrimeira = document.createElement('img');
+      imgPrimeira.src = 'img/Fire-icon.png';
+      imgPrimeira.id = `${i}-${j}`;
+      imgPrimeira.classList.add('tile-frente');
+      imgPrimeira.addEventListener('click', () => {
+        imgPrimeira.classList.add('oculto');
+        imgSegunda.classList.remove('oculto');
+      });
+      celula.appendChild(imgPrimeira);
     }
-    
+  }
 
-    cenario.appendChild(tabela);
-   
-
+  cenario.appendChild(tabela);
 }
 
-/*Menu*/
+function menu() {
+  const sobreposicaoMenu = document.getElementById('menu-sobreposicao');
+  const botaoMenu = document.getElementById('btnAbrirMenu');
+  sobreposicaoMenu.classList.remove('oculto');
+  botaoMenu.style.display = 'none';
+}
 
-function menu(){
-   const menu = document.getElementById("div_menu"); 
-   menu.style.display = "flex";
-   const menu_img = document.getElementById("img_menu");
-   menu_img.style.display = "none";
+function fecharMenu() {
+  const sobreposicaoMenu = document.getElementById('menu-sobreposicao');
+  const botaoMenu = document.getElementById('btnAbrirMenu');
+  sobreposicaoMenu.classList.add('oculto');
+  botaoMenu.style.display = 'block';
 }
-function fechar_menu(){
-    const menu = document.getElementById("div_menu"); 
-    menu.style.display = "none";
-    const menu_img = document.getElementById("img_menu");
-    menu_img.style.display = "block";
+
+function mudarParaMenu() {
+  window.location.href = '../Menu_jogo/index.html';
 }
-function mudar_para_menu(){
-    window.location.href = "../Menu_jogo/index.html";
-}
-        

@@ -1,44 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Batalha naval</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="pagina-container">
+      <button
+        id="btnAbrirMenu"
+        class="botao-menu"
+        type="button"
+        aria-label="Abrir menu"
+      >
+        <img src="img/menu.png" alt="Menu" />
+      </button>
 
-</head>
-<body>
+      <main id="area-jogo" class="area-jogo">
+        <div id="tabuleiro-jogo" class="tabuleiro-jogo"></div>
+      </main>
 
-        
-<div class="container">
-    
-    <img src="img/menu.png" alt="Menu" class="menu" onclick="menu()" id="img_menu">
-    <div id="exibirjogo" class="exibirjogo">
-        <div id="div_menu" class="div_menu" style="display: none;" onclick="fechar_menu()">
-            <div>
-                <button id="btn_continuar" class="btn_continuar" onclick="fechar_menu()">Continuar</button>
-                <br>
-                <button id="btn_voltar_para_menu" class="btn_voltar_para_menu" onclick="mudar_para_menu()">Menu Principal</button>
-            </div>
+      <section id="menu-sobreposicao" class="sobreposicao oculto" onclick="fecharMenu()">
+        <div class="painel-sobreposicao">
+          <button id="btnContinuar" class="botao botao-continuar" type="button">
+            Continuar
+          </button>
+          <button id="btnVoltarMenu" class="botao botao-voltar" type="button">
+            Menu Principal
+          </button>
         </div>
-    <div class="regras" id="regras" style="display: none;" onclick="fechar_regras()">
-        
-            <div class="div_regras">
-                <h2>Como Jogar?</h2>
-                <br>
-                 <p>Clique nos blocos para revelar o que está escondido na frente:</p>
-                <br>
-                <ul>
-                    <li>⚓ <strong>Barco:</strong> Você ganha 10 pontos.</li>
-                    <li>💧 <strong>Água:</strong> Não ganha e não perde pontos.</li>
-                    <li>💣 <strong>Bomba:</strong> Você perde 1 vida. Cuidado!</li>
-                </ul>
-                <br>
-                <button id="btn_fechar_regras" class="btn_fechar_regras" onclick="fechar_regras()">Fechar</button>
-            </div>
+      </section>
+
+      <section
+        id="regras-sobreposicao"
+        class="sobreposicao oculto"
+      >
+        <div class="painel-sobreposicao painel-regras" >
+          <h2>Como Jogar?</h2>
+          <p>Clique nos blocos para revelar o que está escondido na frente:</p>
+          <ul>
+            <li>⚓ <strong>Barco:</strong> Você ganha 10 pontos.</li>
+            <li>💧 <strong>Água:</strong> Não ganha e não perde pontos.</li>
+            <li>💣 <strong>Bomba:</strong> Você perde 1 vida. Cuidado!</li>
+          </ul>
+          <button id="btnFecharRegras" class="botao botao-fechar" type="button">
+            Fechar
+          </button>
+        </div>
+      </section>
     </div>
-    </div>
-</div>
-</body>
+  </body>
 </html>
