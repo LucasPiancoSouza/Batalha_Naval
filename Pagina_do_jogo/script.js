@@ -1,5 +1,6 @@
 // ARRAY COM TODOS OS ELEMENTOS
 const galeria = [];
+let contador_jogadas = 0;
 
 for (let i = 0; i < 35; i++) {
   galeria.push('img/bomba.png');
@@ -49,7 +50,12 @@ function configurarEventos() {
   botaoContinuar.addEventListener('click', fecharMenu);
   botaoVoltarMenu.addEventListener('click', mudarParaMenu);
 }
-
+function resetar_jogo(){
+  let id = document.getElementById("tabuleiro-jogo");
+  id.innerText = "";
+  embaralhar(galeria);
+  criartabela();
+}
 function exibirRegras() {
   const regrasSobreposicao = document.getElementById('regras-sobreposicao');
   regrasSobreposicao.classList.remove('oculto');
@@ -87,6 +93,15 @@ function criartabela() {
       imgPrimeira.addEventListener('click', () => {
         imgPrimeira.classList.add('oculto');
         imgSegunda.classList.remove('oculto');
+        
+        let id = document.getElementById("jogadas");
+        contador_jogadas+= 1;
+        id_botao = document.getElementById("btn-resetar");
+        id.innerText = "Jogadas: "+ contador_jogadas;
+        id_botao.addEventListener('click', () =>{
+          contador_jogadas = 0
+          id.innerText = "Jogadas: "+ contador_jogadas;
+        })
       });
       celula.appendChild(imgPrimeira);
     }

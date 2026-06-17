@@ -22,7 +22,28 @@
       </button>
 
       <main id="area-jogo" class="area-jogo">
-        <div id="tabuleiro-jogo" class="tabuleiro-jogo"></div>
+        <div id="tabuleiro-jogo" class="tabuleiro-jogo">
+
+        </div>
+          <section id="informacoes-jogo" class="informacoes-jogo">
+            <div class="informacoes" id="informacoes">  
+              <p class="pontuacao" id="pontuacao">Pontuação:</p>
+              <br>
+              <p class="jogadas" id="jogadas">
+                Jogadas: 0
+              </p>
+              <br>
+              <p class="bombas" id="bombas">Bombas:</p>
+              <br>
+              <p class="barcos" id="barcos">Barcos:</p>
+              <br>
+              <p class="agua" id="agua">Água:</p>
+            </div>
+            <div class="div-resetar" id="div-resetar">
+              <button id="btn-resetar" class="btn-resetar" onclick="resetar_jogo()">RESETAR</button>
+            </div>
+            
+          </section>
       </main>
 
       <section id="menu-sobreposicao" class="sobreposicao oculto" onclick="fecharMenu()">
@@ -49,7 +70,7 @@
             <li><strong>Bomba:</strong> Você perde 1 vida. Cuidado!</li>
           </ul>
           <button id="btnFecharRegras" class="botao botao-fechar" type="button">
-            Fechar
+            FECHAR
           </button>
         </div>
       </section>
