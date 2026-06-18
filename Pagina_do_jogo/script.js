@@ -1,6 +1,6 @@
 // ARRAY COM TODOS OS ELEMENTOS
 const galeria = [];
-let contador_jogadas = 0;
+let contadorJogadas = 0;
 
 for (let i = 0; i < 35; i++) {
   galeria.push('img/bomba.png');
@@ -21,20 +21,18 @@ for (let i = 0; i < 10; i++) {
 for (let i = 0; i < 10; i++) {
   galeria.push('img/Ship-3.png');
 }
+
 function embaralhar(array) {
   for (let i = array.length - 1; i > 0; i--) {
-
     const j = Math.floor(Math.random() * (i + 1));
-
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
 embaralhar(galeria);
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  criartabela();
+  criarTabela();
   configurarEventos();
   exibirRegras();
 });
@@ -44,30 +42,37 @@ function configurarEventos() {
   const botaoFecharRegras = document.getElementById('btnFecharRegras');
   const botaoContinuar = document.getElementById('btnContinuar');
   const botaoVoltarMenu = document.getElementById('btnVoltarMenu');
+  const botaoResetar = document.getElementById('btn-resetar');
 
-  botaoAbrirMenu.addEventListener('click', menu);
+  botaoAbrirMenu.addEventListener('click', abrirMenu);
   botaoFecharRegras.addEventListener('click', fecharRegras);
   botaoContinuar.addEventListener('click', fecharMenu);
   botaoVoltarMenu.addEventListener('click', mudarParaMenu);
+  botaoResetar.addEventListener('click', resetarJogo);
 }
-function resetar_jogo(){
-  let id = document.getElementById("tabuleiro-jogo");
-  id.innerText = "";
+
+function resetarJogo() {
+  const tabuleiro = document.getElementById('tabuleiro-jogo');
+  tabuleiro.innerText = '';
   embaralhar(galeria);
-  criartabela();
+  criarTabela();
+
+  contadorJogadas = 0;
+  const elementoJogadas = document.getElementById('jogadas');
+  elementoJogadas.innerText = 'Jogadas: ' + contadorJogadas;
 }
+
 function exibirRegras() {
-  const regrasSobreposicao = document.getElementById('regras-sobreposicao');
-  regrasSobreposicao.classList.remove('oculto');
-  regrasSobreposicao.setAttribute('aria-hidden', 'false');
+  const regras = document.getElementById('regras');
+  regras.style.display = 'flex';
 }
 
 function fecharRegras() {
-  const regrasSobreposicao = document.getElementById('regras-sobreposicao');
-  regrasSobreposicao.classList.add('oculto');
+  const regras = document.getElementById('regras');
+  regras.style.display = 'none';
 }
 
-function criartabela() {
+function criarTabela() {
   const tabela = document.createElement('table');
   const cenario = document.getElementById('tabuleiro-jogo');
   let contador = 0;
@@ -80,48 +85,41 @@ function criartabela() {
       const celula = document.createElement('td');
       linha.appendChild(celula);
 
-      const imgSegunda = document.createElement('img');
-      imgSegunda.src = galeria[contador];
+      const imagemVerso = document.createElement('img');
+      imagemVerso.src = galeria[contador];
+      imagemVerso.id = `${i}-${j}`;
       contador += 1;
-      imgSegunda.classList.add('tile-tras', 'oculto');
-      celula.appendChild(imgSegunda);
+      imagemVerso.style.display = 'none';
+      imagemVerso.classList.add('carta-verso');
+      celula.appendChild(imagemVerso);
 
-      const imgPrimeira = document.createElement('img');
-      imgPrimeira.src = 'img/Fire-icon.png';
-      imgPrimeira.id = `${i}-${j}`;
-      imgPrimeira.classList.add('tile-frente');
-      imgPrimeira.addEventListener('click', () => {
-        imgPrimeira.classList.add('oculto');
-        imgSegunda.classList.remove('oculto');
-        
-        let id = document.getElementById("jogadas");
-        contador_jogadas+= 1;
-        id_botao = document.getElementById("btn-resetar");
-        id.innerText = "Jogadas: "+ contador_jogadas;
-        id_botao.addEventListener('click', () =>{
-          contador_jogadas = 0
-          id.innerText = "Jogadas: "+ contador_jogadas;
-        })
+      const imagemFrente = document.createElement('img');
+      imagemFrente.src = 'img/Fire-icon.png';
+      imagemFrente.id = `${i}-${j}`;
+      imagemFrente.classList.add('carta-frente');
+      imagemFrente.addEventListener('click', () => {
+        imagemFrente.style.display = 'none';
+        imagemVerso.style.display = 'block';
+
+        contadorJogadas += 1;
+        const elementoJogadas = document.getElementById('jogadas');
+        elementoJogadas.innerText = 'Jogadas: ' + contadorJogadas;
       });
-      celula.appendChild(imgPrimeira);
+      celula.appendChild(imagemFrente);
     }
   }
 
   cenario.appendChild(tabela);
 }
 
-function menu() {
-  const sobreposicaoMenu = document.getElementById('menu-sobreposicao');
-  const botaoMenu = document.getElementById('btnAbrirMenu');
-  sobreposicaoMenu.classList.remove('oculto');
-  botaoMenu.style.display = 'none';
+function abrirMenu() {
+  const menu = document.getElementById('menu');
+  menu.style.display = 'flex';
 }
 
 function fecharMenu() {
-  const sobreposicaoMenu = document.getElementById('menu-sobreposicao');
-  const botaoMenu = document.getElementById('btnAbrirMenu');
-  sobreposicaoMenu.classList.add('oculto');
-  botaoMenu.style.display = 'block';
+  const menu = document.getElementById('menu');
+  menu.style.display = 'none';
 }
 
 function mudarParaMenu() {

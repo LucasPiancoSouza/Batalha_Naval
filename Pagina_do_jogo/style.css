@@ -1,4 +1,4 @@
-:root{
+:root {
   --bg-overlay: rgba(0, 0, 0, 0.8);
   --panel-bg: rgba(217, 217, 217, 0.95);
   --button-radius: 0.75rem;
@@ -7,28 +7,31 @@
   --fonte-titulo: "Bebas Neue", sans-serif;
   --peso-titulo: 400;
   --estilo-titulo: normal;
-  --fonte-paragrafo : "Roboto Condensed", sans-serif;
+  --fonte-paragrafo: "Roboto Condensed", sans-serif;
   --peso-paragrafo: 400;
   --estilo-paragrafo: normal;
   --tamanho-optico-paragrafo: auto;
 }
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   min-height: 100%;
 }
-body{
+
+body {
+  min-height: 100vh;
   font-family: var(--fonte-paragrafo);
   background-image: url(../img/fundo_tela_do_jogo.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh;
 }
 
 .pagina-container {
@@ -36,8 +39,7 @@ body{
   position: relative;
 }
 
-
-.botao-menu {
+.btnAbrirMenu {
   position: fixed;
   top: 1rem;
   left: 1rem;
@@ -48,7 +50,7 @@ body{
   padding: 0;
 }
 
-.botao-menu img {
+.btnAbrirMenu img {
   width: 3rem;
   height: auto;
   display: block;
@@ -59,57 +61,58 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   padding: 1rem;
   background-color: #00000067;
 }
 
+.tabuleiro-jogo {
+  width: min(68vw, 560px);
+}
+
 .tabuleiro-jogo table {
-  border-collapse: collapse;
-  background-color: rgba(204, 200, 200, 0.782);
-  border-radius: 2vh;
   width: 100%;
-  max-width: 550px;
+  border-collapse: collapse;
   table-layout: fixed;
-  /*garante que as 10 colunas tenham tamanho igual*/
+  overflow: hidden;
+  border-radius: 2vh;
+  background-color: rgba(204, 200, 200, 0.782);
 }
 
 .tabuleiro-jogo td {
   padding: 0.2rem;
   aspect-ratio: 1;
-  /*garante que as células sejam quadradas*/
 }
 
-.tabuleiro-jogo tr td img {
+.tabuleiro-jogo img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /*faz as imagens se ajustarem perfeitamente às células*/
 }
 
-.imagem-frente {
+.carta-frente {
   cursor: pointer;
 }
 
-.oculto {
-  display: none !important;
-}
-
-.sobreposicao {
+.menu,
+.regras {
   position: fixed;
   inset: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
   background-color: var(--bg-overlay);
   z-index: 10;
 }
 
-.oculto {
-  display: none;
+.regras {
+  z-index: 11;
 }
 
-.painel-sobreposicao {
+.painel-menu,
+.painel-regras {
   width: min(45vw, 560px);
   padding: 2rem;
   display: flex;
@@ -121,112 +124,160 @@ body{
   text-align: center;
 }
 
-.painel-regras h2 {
-  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
-  color: #000;
-  font-family: var(--fonte-titulo);
+.painel-menu {
+  width: min(35vw, 420px);
 }
 
-.painel-regras p,
-.painel-regras ul,
-.painel-regras li {
+.regras h2 {
+  color: #000;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  font-weight: var(--peso-titulo);
+  font-style: var(--estilo-titulo);
+}
+
+.regras p,
+.regras ul,
+.regras li {
   font-size: clamp(1rem, 1.5vw, 1.25rem);
 }
 
-.painel-regras ul {
+.regras ul {
   list-style: none;
-  padding: 0;
 }
 
-.painel-regras li {
+.regras li {
   margin: 0.5rem 0;
 }
 
-.botao {
+.btnContinuar,
+.btnVoltarMenu,
+.btnFecharRegras {
   width: 100%;
   max-width: 320px;
   padding: var(--button-padding);
-  border-radius: var(--button-radius);
   border: none;
+  border-radius: var(--button-radius);
+  font-family: var(--fonte-paragrafo);
   font-size: var(--button-font);
   cursor: pointer;
-  font-family: var(--fonte-paragrafo);
 }
 
-.botao-continuar {
+.btnContinuar {
   background-color: green;
   color: white;
 }
 
-.botao-voltar,
-.botao-fechar {
+.btnVoltarMenu,
+.btnFecharRegras {
   background-color: red;
   color: white;
 }
-.informacoes-jogo{
-  width: 20vw;
-  height: 75vh;
-  background-color: rgba(204, 200, 200, 0.782);
-  margin-left: 1vw;
-  border-radius: 2vh;
-}
-.div-resetar{
-  width: 100%;
-  height: 37.5vh;
+
+.informacoes-jogo {
+  width: min(22vw, 260px);
+  min-width: 180px;
+  min-height: 75vh;
+  padding: 1rem;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 2vh;
+  background-color: rgba(204, 200, 200, 0.782);
 }
-.informacoes{
-  position: relative;
-  left: 1vw;
-  top: 2vh;
-}
-.pontuacao,.bombas, .agua, .barcos, .jogadas{
-  font-size: 1.5rem;
+
+.pontuacao,
+.bombas,
+.agua,
+.barcos,
+.jogadas {
   font-family: var(--fonte-paragrafo);
+  font-size: 1.5rem;
   font-weight: var(--peso-paragrafo);
 }
-.btn-resetar{
-  width: 10vw;
-  height: 5vh;
-  background-color: rgba(220, 0, 0, 0.8);
+
+.div-resetar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-resetar {
+  width: min(100%, 160px);
+  min-height: 3vh;
+  padding: var(--button-padding);
   border: none;
-  font-family: var(--fonte-paragrafo);
   border-radius: var(--button-radius);
+  background-color: rgba(220, 0, 0, 0.8);
   color: white;
+  font-family: var(--fonte-paragrafo);
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
-  .painel-sobreposicao {
-    width: min(90vw, 420px);
-    padding: 1.5rem;
+  .area-jogo {
+    flex-direction: column;
+    padding-top: 5rem;
   }
 
-  .botao-menu {
+  .btnAbrirMenu {
     top: 0.75rem;
     left: 0.75rem;
   }
 
-  .tabuleiro-jogo table {
-    max-width: 90vw;
+  .tabuleiro-jogo,
+  .informacoes-jogo {
+    width: min(92vw, 560px);
+  }
+
+  .informacoes-jogo {
+    min-height: auto;
+    gap: 1.25rem;
+  }
+
+  .informacoes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .painel-menu,
+  .painel-regras {
+    width: min(90vw, 420px);
+    padding: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .botao-menu img {
+  .btnAbrirMenu img {
     width: 2.5rem;
   }
 
-  .botao {
+  .botao,
+  .btnContinuar,
+  .btnVoltarMenu,
+  .btn-fechar-regras,
+  .btn-resetar {
     font-size: 1rem;
   }
 
-  .tabuleiro-jogo table {
-    max-width: 95vw;
+  .tabuleiro-jogo,
+  .informacoes-jogo {
+    width: 95vw;
   }
 
   .tabuleiro-jogo td {
     padding: 0.1rem;
+  }
+
+  .informacoes {
+    grid-template-columns: 1fr;
+  }
+
+  .pontuacao,
+  .bombas,
+  .agua,
+  .barcos,
+  .jogadas {
+    font-size: 1.25rem;
   }
 }

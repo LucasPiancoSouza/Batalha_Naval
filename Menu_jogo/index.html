@@ -11,13 +11,19 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <div class="container" id="container">
+    <section class="container" id="container">
         <h1 class="Titulo">Batalha Naval</h1>
-        <div class="menu_iniciar" id="menu_iniciar">
-                <button class="iniciar" id="iniciar" onclick="mudar_para_jogo()">
+            <div class="menu_iniciar" id="menu_iniciar">
+                <button class="btnIniciar" id="btnIniciar" onclick="mudar_para_jogo()">
                     <p>Começar</p>
                 </button>
-        </div>
-    </div>
+            </div>
+            <br>
+            <select class="dificuldade" id="dificuldade">
+                <option>Fácil</option>
+                <option>Médio</option>
+                <option>Difícil</option>
+            </select>
+        </section>
 </body>
 </html>
