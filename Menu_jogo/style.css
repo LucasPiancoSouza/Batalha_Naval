@@ -10,6 +10,7 @@
 html, body{
     width: 100%;
     min-height: 100%;
+
 }
 
 body{
@@ -37,7 +38,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 50vw;
+    width: auto;
     gap: 2vh;
     height: auto;
     border-radius: 0.5vw;
@@ -51,7 +52,7 @@ body{
     height: 9vh;
     border: none;
     border-radius: 0.5vw;
-    background-color: rgba(184, 8, 8, 0.877);
+    background-color: rgb(184, 8, 8);
     color:white;
 }
 .Titulo{
@@ -72,12 +73,12 @@ body{
     width: 15vw;
     height: 5vh;
     text-align: center;
-    border-radius: 0.5vw;
+    border-top-left-radius:0.5vw ;
+    border-top-right-radius:0.5vw ;
     background-color: rgba(220, 220, 220, 0.551);
 }
-.dificuldade option{
-    background-color: rgba(220, 220, 220, 0.551);
-}
+
+
 @media (max-width: 480px){
     html, body{
     width: 100%;

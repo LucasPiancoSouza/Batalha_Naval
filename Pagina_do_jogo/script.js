@@ -1,26 +1,30 @@
-// ARRAY COM TODOS OS ELEMENTOS
+// ARRAY COM TODOS OS ELEMENTOs
 const galeria = [];
+qtd_barcos = 0;
+qtd_bombas  = 0;
+qtd_aguas = 0;
 let contadorJogadas = 0;
 
 for (let i = 0; i < 35; i++) {
-  galeria.push('img/bomba.png');
+  galeria.push("bomba");
 }
 
 for (let i = 0; i < 35; i++) {
-  galeria.push('img/Wave.png');
+  galeria.push("agua");
 }
 
-for (let i = 0; i < 10; i++) {
-  galeria.push('img/Ship-1.png');
-}
+// for (let i = 0; i < 10; i++) {
+//   galeria.push('img/Ship-1.png');
+// }
 
-for (let i = 0; i < 10; i++) {
-  galeria.push('img/Ship-2.png');
-}
+// for (let i = 0; i < 10; i++) {
+//   galeria.push('img/Ship-2.png');
+// }
 
-for (let i = 0; i < 10; i++) {
-  galeria.push('img/Ship-3.png');
+for (let i = 0; i < 30; i++) {
+  galeria.push("barco");
 }
+console.log(galeria);
 
 function embaralhar(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -73,6 +77,9 @@ function fecharRegras() {
 }
 
 function criarTabela() {
+  qtd_bombas = 0;
+  qtd_barcos = 0;
+  qtd_aguas = 0;
   const tabela = document.createElement('table');
   const cenario = document.getElementById('tabuleiro-jogo');
   let contador = 0;
@@ -84,14 +91,31 @@ function criarTabela() {
     for (let j = 0; j < 10; j++) {
       const celula = document.createElement('td');
       linha.appendChild(celula);
-
       const imagemVerso = document.createElement('img');
-      imagemVerso.src = galeria[contador];
-      imagemVerso.id = `${i}-${j}`;
-      contador += 1;
-      imagemVerso.style.display = 'none';
-      imagemVerso.classList.add('carta-verso');
-      celula.appendChild(imagemVerso);
+
+      if(galeria[i*j] == "bomba"){
+          imagemVerso.src = 'img/bomba.png';
+          imagemVerso.style.display = "none";
+          celula.appendChild(imagemVerso); 
+          qtd_bombas++;
+          id_qtdbombas = document.getElementById("bombas");
+          id_qtdbombas.innerText = "Bombas:" + qtd_bombas;
+      }if(galeria[i*j] == "barco"){
+          imagemVerso.src = 'img/barco.png';
+          imagemVerso.style.display = "none";
+          celula.appendChild(imagemVerso); 
+          qtd_barcos++;
+          id_qtdbarcos = document.getElementById("barcos");
+          id_qtdbarcos.innerText = "Barcos:" + qtd_barcos
+      }if(galeria[i*j] == "agua"){
+          imagemVerso.src = 'img/agua.png';
+          imagemVerso.style.display = "none";
+          celula.appendChild(imagemVerso); 
+          qtd_aguas++;
+          id_qtdaguas = document.getElementById("agua");
+          id_qtdaguas.innerText ="Águas:" + qtd_barcos
+      }
+
 
       const imagemFrente = document.createElement('img');
       imagemFrente.src = 'img/Fire-icon.png';
@@ -111,6 +135,7 @@ function criarTabela() {
 
   cenario.appendChild(tabela);
 }
+
 
 function abrirMenu() {
   const menu = document.getElementById('menu');
