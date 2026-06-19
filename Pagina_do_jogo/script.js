@@ -1,30 +1,63 @@
-// ARRAY COM TODOS OS ELEMENTOs
-const galeria = [];
-qtd_barcos = 0;
-qtd_bombas  = 0;
-qtd_aguas = 0;
+// 1. Pegar a dificuldade guardada no localStorage (se não houver, define 'fácil' como padrão)
+let dificuldade = localStorage.getItem("dificuldade") || "Fácil";
+console.log("Dificuldade selecionada:", dificuldade);
+
+// 2. Objeto de configuração que você sugeriu
+const CONFIG_DIFICULDADE = {
+  Fácil: {
+    bombas: { min: 20, max: 30 },
+    barcos: { min: 25, max: 45 },
+    vidas: 4
+  },
+  Médio: {
+    bombas: { min: 35, max: 40 },
+    barcos: { min: 20, max: 35 }, 
+    vidas: 3
+  },
+  Difícil: {
+    bombas: { min: 40, max: 50 },
+    barcos: { min: 15, max: 25 },
+    vidas: 2
+  }
+};
+
+// Variáveis globais do jogo
+let galeria = [];
+let qtd_barcos = 0;
+let qtd_bombas = 0;
+let qtd_aguas = 0;
 let contadorJogadas = 0;
+let pontuacao = 0;
 
-for (let i = 0; i < 35; i++) {
-  galeria.push("bomba");
+// 3. Função para sortear a quantidade dentro do intervalo
+function sortearQuantidade(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-for (let i = 0; i < 35; i++) {
-  galeria.push("agua");
+// 4. Nova função para montar o array baseado na dificuldade
+function prepararGaleria() {
+  galeria = []; // Limpa o array antigo
+
+  // Pega as configurações da dificuldade atual
+  const config = CONFIG_DIFICULDADE[dificuldade];
+
+  // Sorteia a quantidade exata de bombas e barcos para esta partida
+  const totalBombas = sortearQuantidade(config.bombas.min, config.bombas.max);
+  const totalBarcos = sortearQuantidade(config.barcos.min, config.barcos.max);
+  
+  // O resto do tabuleiro (total de 100 blocos em uma tabela 10x10) vira água
+  const totalAguas = 100 - (totalBombas + totalBarcos);
+
+  // Preenche o array linear
+  for (let i = 0; i < totalBombas; i++) galeria.push("bomba");
+  for (let i = 0; i < totalBarcos; i++) galeria.push("barco");
+  for (let i = 0; i < totalAguas; i++) galeria.push("agua");
+
+  console.log(`Partida Iniciada! Bombas: ${totalBombas} | Barcos: ${totalBarcos} | Água: ${totalAguas}`);
+  
+  // Embaralha para que fiquem em posições aleatórias
+  embaralhar(galeria);
 }
-
-// for (let i = 0; i < 10; i++) {
-//   galeria.push('img/Ship-1.png');
-// }
-
-// for (let i = 0; i < 10; i++) {
-//   galeria.push('img/Ship-2.png');
-// }
-
-for (let i = 0; i < 30; i++) {
-  galeria.push("barco");
-}
-console.log(galeria);
 
 function embaralhar(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -33,13 +66,17 @@ function embaralhar(array) {
   }
 }
 
-embaralhar(galeria);
-
+// Inicialização do jogo modificada
 document.addEventListener('DOMContentLoaded', () => {
-  criarTabela();
+  preparparPartida(); 
   configurarEventos();
   exibirRegras();
 });
+
+function preparparPartida() {
+  prepararGaleria(); // Monta e embaralha os itens baseados na dificuldade
+  criarTabela();     // Renderiza o visual do tabuleiro
+}
 
 function configurarEventos() {
   const botaoAbrirMenu = document.getElementById('btnAbrirMenu');
@@ -58,8 +95,9 @@ function configurarEventos() {
 function resetarJogo() {
   const tabuleiro = document.getElementById('tabuleiro-jogo');
   tabuleiro.innerText = '';
-  embaralhar(galeria);
-  criarTabela();
+  
+  // No reset, chamamos a preparação de novo para sortear novos valores!
+  preparparPartida();
 
   contadorJogadas = 0;
   const elementoJogadas = document.getElementById('jogadas');
@@ -76,13 +114,18 @@ function fecharRegras() {
   regras.style.display = 'none';
 }
 
+// 5. Ajuste crucial na função criarTabela para ler o array linear corretamente
 function criarTabela() {
+  // Reinicia os contadores de exibição
   qtd_bombas = 0;
   qtd_barcos = 0;
   qtd_aguas = 0;
+  
   const tabela = document.createElement('table');
   const cenario = document.getElementById('tabuleiro-jogo');
-  let contador = 0;
+  
+  // Limpa o tabuleiro completamente antes de desenhar (evita duplicações)
+  cenario.innerHTML = '';
 
   for (let i = 0; i < 10; i++) {
     const linha = document.createElement('tr');
@@ -91,51 +134,77 @@ function criarTabela() {
     for (let j = 0; j < 10; j++) {
       const celula = document.createElement('td');
       linha.appendChild(celula);
-      const imagemVerso = document.createElement('img');
+      
+      // CÁLCULO MATEMÁTICO DO ÍNDICE: Garante a posição exata de 0 a 99 sem repetir nada
+      let indiceAssegurado = (i * 10) + j;
+      let tipoItem = galeria[indiceAssegurado];
 
-      if(galeria[i*j] == "bomba"){
+      // Criar o elemento do Verso (O que está escondido)
+      const imagemVerso = document.createElement('img');
+      imagemVerso.style.display = "none"; // Começa escondido
+
+      // Define o tipo correto baseado no array embaralhado
+      if (tipoItem === "bomba") {
           imagemVerso.src = 'img/bomba.png';
-          imagemVerso.style.display = "none";
-          celula.appendChild(imagemVerso); 
           qtd_bombas++;
-          id_qtdbombas = document.getElementById("bombas");
-          id_qtdbombas.innerText = "Bombas:" + qtd_bombas;
-      }if(galeria[i*j] == "barco"){
+      } else if (tipoItem === "barco") {
           imagemVerso.src = 'img/barco.png';
-          imagemVerso.style.display = "none";
-          celula.appendChild(imagemVerso); 
           qtd_barcos++;
-          id_qtdbarcos = document.getElementById("barcos");
-          id_qtdbarcos.innerText = "Barcos:" + qtd_barcos
-      }if(galeria[i*j] == "agua"){
+      } else {
           imagemVerso.src = 'img/agua.png';
-          imagemVerso.style.display = "none";
-          celula.appendChild(imagemVerso); 
           qtd_aguas++;
-          id_qtdaguas = document.getElementById("agua");
-          id_qtdaguas.innerText ="Águas:" + qtd_barcos
       }
 
-
+      // Criar o elemento da Frente (A fumaça/fogo que o jogador clica)
       const imagemFrente = document.createElement('img');
       imagemFrente.src = 'img/Fire-icon.png';
-      imagemFrente.id = `${i}-${j}`;
+      imagemFrente.id = `frente-${i}-${j}`; // ID único para evitar conflito no DOM
       imagemFrente.classList.add('carta-frente');
+      
+      // Evento de clique isolado por célula
       imagemFrente.addEventListener('click', () => {
         imagemFrente.style.display = 'none';
         imagemVerso.style.display = 'block';
-
+        if (galeria[indiceAssegurado] == "bomba"){
+          if(pontuacao >= 10){
+              pontuacao -= 10;
+              id_pontuacao = document.getElementById("pontuacao");
+              id_pontuacao.innerText = "Pontuação: "+pontuacao;
+          }
+        }if(galeria[indiceAssegurado] == "barco"){
+          pontuacao += 10;
+          id_pontuacao = document.getElementById("pontuacao");
+          id_pontuacao.innerText = "Pontuação: "+pontuacao;
+        }
+        
         contadorJogadas += 1;
-        const elementoJogadas = document.getElementById('jogadas');
-        elementoJogadas.innerText = 'Jogadas: ' + contadorJogadas;
+        document.getElementById('jogadas').innerText = 'Jogadas: ' + contadorJogadas;
       });
+        const config = CONFIG_DIFICULDADE[dificuldade];
+        let vidas = config.vidas;
+        contador_vidas = 0;
+        let id_vidas = document.getElementById("vidas")
+        id_vidas.innerText = "";
+        while(contador_vidas < vidas){
+          let img_vidas = document.createElement("img");
+          img_vidas.className = "coracoes";
+          img_vidas.src = "img/vidas.png";
+          id_vidas.appendChild(img_vidas);
+          contador_vidas++;
+        }
+      // IMPORTANTE: Adiciona ambos na ordem correta dentro da célula atual
+      celula.appendChild(imagemVerso);
       celula.appendChild(imagemFrente);
     }
   }
 
+  // Atualiza os textos do painel de informações uma única vez após o término do loop
+  document.getElementById("bombas").innerText = "Bombas: " + qtd_bombas;
+  document.getElementById("barcos").innerText = "Barcos: " + qtd_barcos;
+  document.getElementById("agua").innerText = "Águas: " + qtd_aguas;
+
   cenario.appendChild(tabela);
 }
-
 
 function abrirMenu() {
   const menu = document.getElementById('menu');

@@ -75,13 +75,15 @@ body {
   border-collapse: collapse;
   table-layout: fixed;
   overflow: hidden;
-  border-radius: 2vh;
-  background-color: rgba(204, 200, 200, 0.782);
+  background-color: rgba(218, 218, 218, 0.704);
+  border-radius: 30px;
+
 }
 
 .tabuleiro-jogo td {
   padding: 0.2rem;
   aspect-ratio: 1;
+  border: 2px solid #000;
 }
 
 .tabuleiro-jogo img {
@@ -193,7 +195,7 @@ body {
 .jogadas {
   font-family: var(--fonte-paragrafo);
   font-size: 1.5rem;
-  font-weight: var(--peso-paragrafo);
+  font-weight:500;
 }
 
 .div-resetar {
@@ -213,7 +215,16 @@ body {
   font-family: var(--fonte-paragrafo);
   cursor: pointer;
 }
-
+.vidas{
+  width: 100%;
+  height: 15vh;
+  display: flex;
+}
+.coracoes{
+  width: auto;
+  height: 8vh;
+  position: relative;
+}
 @media (max-width: 768px) {
   .area-jogo {
     flex-direction: column;
