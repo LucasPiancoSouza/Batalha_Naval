@@ -110,6 +110,9 @@ function resetarJogo() {
   let id_tempo = document.getElementById("tempo");
   id_tempo.innerText = "Tempo: 0:00";
   temporizador();
+   musica.pause();
+    musica.currentTime = 0;
+    musica.play();
 }
 
 function exibirRegras() {
@@ -121,6 +124,7 @@ function exibirRegras() {
 const musica = new Audio("Som/piratesom.mp3");
 musica.loop = true;
 
+const somDerrota = new Audio("Som/defeat_sound.mp3");
 
 function fecharRegras() {
   const regras = document.getElementById('regras');
@@ -208,6 +212,10 @@ function criarTabela() {
             id_img_vidas.style.display = 'none';
             if (vidasRestantes == 0) {
               pararTemporizador();
+              musica.pause();
+              musica.currentTime = 0;
+
+    somDerrota.play();
             }
           }
         }else if(galeria[indiceAssegurado] == "barco"){
@@ -237,6 +245,8 @@ function criarTabela() {
   document.getElementById("agua").innerText = "Águas: " + qtd_aguas;
   document.getElementById("barcos").innerText = "Barcos: " + qtd_barcos;
   cenario.appendChild(tabela);
+
+
 }
 
 function abrirMenu() {
