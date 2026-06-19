@@ -118,11 +118,16 @@ function exibirRegras() {
   document.body.style.overflow = 'hidden';
 }
 
+const musica = new Audio("Som/piratesom.mp3");
+musica.loop = true;
+
+
 function fecharRegras() {
   const regras = document.getElementById('regras');
   regras.style.display = 'none';
   document.body.style.overflow = '';
   temporizador(1000);
+musica.play();
 }
 
 // 5. Ajuste crucial na função criarTabela para ler o array linear corretamente
