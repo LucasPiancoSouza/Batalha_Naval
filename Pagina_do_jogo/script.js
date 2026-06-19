@@ -1,5 +1,5 @@
 // 1. Pegar a dificuldade guardada no localStorage (se não houver, define 'fácil' como padrão)
-let dificuldade = localStorage.getItem("dificuldade") || "Fácil";
+let dificuldade = localStorage.getItem("dificuldade") || "Médio";
 console.log("Dificuldade selecionada:", dificuldade);
 
 // 2. Objeto de configuração que você sugeriu
@@ -28,6 +28,7 @@ let qtd_bombas = 0;
 let qtd_aguas = 0;
 let contadorJogadas = 0;
 let pontuacao = 0;
+let vidasRestantes = 0;
 
 // 3. Função para sortear a quantidade dentro do intervalo
 function sortearQuantidade(min, max) {
@@ -102,16 +103,23 @@ function resetarJogo() {
   contadorJogadas = 0;
   const elementoJogadas = document.getElementById('jogadas');
   elementoJogadas.innerText = 'Jogadas: ' + contadorJogadas;
+  pontuacao = 0;
+  id_pontuacao = document.getElementById("pontuacao");
+  id_pontuacao.innerText = "Pontuação: "+pontuacao;
+  totalSegundos = 0;
 }
 
 function exibirRegras() {
   const regras = document.getElementById('regras');
   regras.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
 }
 
 function fecharRegras() {
   const regras = document.getElementById('regras');
   regras.style.display = 'none';
+  document.body.style.overflow = 'hidden';
+  temporizador();
 }
 
 // 5. Ajuste crucial na função criarTabela para ler o array linear corretamente
@@ -126,6 +134,20 @@ function criarTabela() {
   
   // Limpa o tabuleiro completamente antes de desenhar (evita duplicações)
   cenario.innerHTML = '';
+
+  const config = CONFIG_DIFICULDADE[dificuldade];
+        vidasRestantes = config.vidas;
+        let contador_vidas = 0;
+        let id_vidas = document.getElementById("vidas")
+        id_vidas.innerText = "";
+        while(contador_vidas < vidasRestantes){
+          let img_vidas = document.createElement("img");
+          img_vidas.className = "coracoes";
+          img_vidas.src = "img/vidas.png";
+          img_vidas.id = "vida-"+contador_vidas;
+          id_vidas.appendChild(img_vidas);
+          contador_vidas++;
+        }
 
   for (let i = 0; i < 10; i++) {
     const linha = document.createElement('tr');
@@ -160,7 +182,6 @@ function criarTabela() {
       imagemFrente.src = 'img/Fire-icon.png';
       imagemFrente.id = `frente-${i}-${j}`; // ID único para evitar conflito no DOM
       imagemFrente.classList.add('carta-frente');
-      
       // Evento de clique isolado por célula
       imagemFrente.addEventListener('click', () => {
         imagemFrente.style.display = 'none';
@@ -169,7 +190,12 @@ function criarTabela() {
           if(pontuacao >= 10){
               pontuacao -= 10;
               id_pontuacao = document.getElementById("pontuacao");
-              id_pontuacao.innerText = "Pontuação: "+pontuacao;
+              id_pontuacao.innerText = "Pontuação: "+pontuacao; 
+          }
+          if(vidasRestantes > 0){
+            vidasRestantes--;
+            let id_img_vidas = document.getElementById("vida-"+vidasRestantes);
+            id_img_vidas.style.display = 'none';
           }
         }if(galeria[indiceAssegurado] == "barco"){
           pontuacao += 10;
@@ -180,23 +206,13 @@ function criarTabela() {
         contadorJogadas += 1;
         document.getElementById('jogadas').innerText = 'Jogadas: ' + contadorJogadas;
       });
-        const config = CONFIG_DIFICULDADE[dificuldade];
-        let vidas = config.vidas;
-        contador_vidas = 0;
-        let id_vidas = document.getElementById("vidas")
-        id_vidas.innerText = "";
-        while(contador_vidas < vidas){
-          let img_vidas = document.createElement("img");
-          img_vidas.className = "coracoes";
-          img_vidas.src = "img/vidas.png";
-          id_vidas.appendChild(img_vidas);
-          contador_vidas++;
-        }
+        
       // IMPORTANTE: Adiciona ambos na ordem correta dentro da célula atual
       celula.appendChild(imagemVerso);
       celula.appendChild(imagemFrente);
     }
   }
+  
 
   // Atualiza os textos do painel de informações uma única vez após o término do loop
   document.getElementById("bombas").innerText = "Bombas: " + qtd_bombas;
@@ -209,13 +225,34 @@ function criarTabela() {
 function abrirMenu() {
   const menu = document.getElementById('menu');
   menu.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
 }
 
 function fecharMenu() {
   const menu = document.getElementById('menu');
   menu.style.display = 'none';
+  document.body.style.overflow = '';
 }
 
 function mudarParaMenu() {
   window.location.href = '../Menu_jogo/index.html';
 }
+
+let totalSegundos = 0;
+function temporizador(){
+setInterval(() => {
+    totalSegundos++;
+
+    let minutos = Math.floor(totalSegundos / 60);
+    let segundos = totalSegundos % 60;
+
+    if (segundos < 10) {
+        segundos = "0" + segundos;
+    }
+
+    document.getElementById("tempo").textContent =
+        "Tempo: "+minutos + ":" + segundos;
+
+}, 1000);
+}
+

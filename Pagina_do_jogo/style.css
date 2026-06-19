@@ -63,7 +63,7 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background-color: #00000067;
+  background-color: #00000069;
 }
 
 .tabuleiro-jogo {
@@ -97,7 +97,16 @@ body {
   cursor: pointer;
 }
 
-.menu,
+.menu{
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--bg-overlay);
+  z-index: 10;
+}
 .regras {
   position: fixed;
   inset: 0;
@@ -141,7 +150,7 @@ body {
 .regras p,
 .regras ul,
 .regras li {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-size: clamp(1.75rem, 1.5vw, 1.5rem);
 }
 
 .regras ul {
@@ -161,7 +170,7 @@ body {
   border: none;
   border-radius: var(--button-radius);
   font-family: var(--fonte-paragrafo);
-  font-size: var(--button-font);
+  font-size: clamp(1rem, 1.5vw, 1.5rem) ;
   cursor: pointer;
 }
 
@@ -179,7 +188,7 @@ body {
 .informacoes-jogo {
   width: min(22vw, 260px);
   min-width: 180px;
-  min-height: 75vh;
+  min-height: 92vh;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -187,6 +196,7 @@ body {
   border-radius: 2vh;
   background-color: rgba(204, 200, 200, 0.782);
 }
+
 
 .pontuacao,
 .bombas,
@@ -225,40 +235,22 @@ body {
   height: 8vh;
   position: relative;
 }
-@media (max-width: 768px) {
+#tempo {
+    font-size: 4vh;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    padding: 3vh;
+    border-radius: 10px;
+   text-align:center;
+   background-color:black;
+}
+@media (max-width: 480px) {
   .area-jogo {
     flex-direction: column;
     padding-top: 5rem;
   }
 
-  .btnAbrirMenu {
-    top: 0.75rem;
-    left: 0.75rem;
-  }
-
-  .tabuleiro-jogo,
-  .informacoes-jogo {
-    width: min(92vw, 560px);
-  }
-
-  .informacoes-jogo {
-    min-height: auto;
-    gap: 1.25rem;
-  }
-
-  .informacoes {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .painel-menu,
-  .painel-regras {
-    width: min(90vw, 420px);
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
   .btnAbrirMenu img {
     width: 2.5rem;
   }
@@ -268,6 +260,7 @@ body {
   .btnVoltarMenu,
   .btn-fechar-regras,
   .btn-resetar {
+    width: auto;
     font-size: 1rem;
   }
 
@@ -284,6 +277,11 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .informacoes-jogo {
+    min-height: auto;
+    gap: 1.25rem;
+  }
+
   .pontuacao,
   .bombas,
   .agua,
@@ -291,4 +289,72 @@ body {
   .jogadas {
     font-size: 1.25rem;
   }
+  .painel-regras {
+  width: min(90vw, 560px);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  background-color: var(--panel-bg);
+  border-radius: 1rem;
+  text-align: center;
 }
+#tempo {
+    font-size: 4vh;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    padding: 2vh;
+    border-radius: 10px;
+   text-align:center;
+   background-color:black;
+}
+}
+
+@media (min-width:481px) and (max-width:1024px) {
+  .area-jogo {
+    flex-direction: column;
+    padding-top: 5rem;
+  }
+
+  .btnAbrirMenu {
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .tabuleiro-jogo,
+  .informacoes-jogo {
+    width: min(85vw, 560px);
+  }
+
+  .informacoes-jogo {
+    min-height: auto;
+    gap: 1.25rem;
+  }
+
+  .informacoes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .painel-menu,
+  .painel-regras {
+    width: min(90vw, 480px);
+    padding: 1.5rem;
+  }
+  #tempo {
+    width: 100%;
+    font-size: 4vh;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    padding: 1vh;
+    border-radius: 10px;
+   text-align:center;
+   background-color:black;
+}
+
+}
+
+

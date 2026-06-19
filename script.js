@@ -11,5 +11,23 @@ id.appendChild(formulario);
 }
 
 function entrar () {
-     window.location.href = "Menu_jogo/index.html";
+ let nome = document.getElementById("input-1").value;
+if (nome === "") {
+alert("Erro! Coloque seu nome.");
+return;
+}
+
+if (nome.length < 4) {
+alert("Seu nome precisa ter pelo menos 4 caracteres.");
+return;
+}
+localStorage.setItem ("nome", nome);
+window.location.href = "Menu_jogo/index.html";
+
+}
+
+function contador (){
+contador = 0;
+
+
 }

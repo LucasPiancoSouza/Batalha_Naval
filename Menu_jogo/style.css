@@ -126,6 +126,15 @@ body{
 .btnIniciar p{
     font-size: 5vw;
 }
+.dificuldade{
+    width: auto;
+    height: 5vh;
+    text-align: center;
+    border-top-left-radius:0.5vw ;
+    border-top-right-radius:0.5vw ;
+    background-color: rgba(220, 220, 220, 0.551);
+    font-size: 3vw;
+}
 }
 @media (min-width: 481px) and (max-width: 767px) {
     .btnIniciar{
@@ -141,6 +150,15 @@ body{
     color:white;
 }
 .btnIniciar p{
+    font-size: 3vw;
+}
+.dificuldade{
+    width: auto;
+    height: 5vh;
+    text-align: center;
+    border-top-left-radius:0.5vw ;
+    border-top-right-radius:0.5vw ;
+    background-color: rgba(220, 220, 220, 0.551);
     font-size: 3vw;
 }
 }
@@ -160,4 +178,13 @@ body{
 .btnIniciar p{
     font-size: 3vw;
 }   
+.dificuldade{
+    width: auto;
+    height: 5vh;
+    text-align: center;
+    border-top-left-radius:0.5vw ;
+    border-top-right-radius:0.5vw ;
+    background-color: rgba(220, 220, 220, 0.551);
+    font-size: 3vw;
+}
 }
