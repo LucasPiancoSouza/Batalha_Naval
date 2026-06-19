@@ -110,9 +110,23 @@ function resetarJogo() {
   let id_tempo = document.getElementById("tempo");
   id_tempo.innerText = "Tempo: 0:00";
   temporizador();
-   musica.pause();
-    musica.currentTime = 0;
+somDerrota.pause();
+somDerrota.currentTime = 0;
+
+somVitoria.pause();
+somVitoria.currentTime = 0;
+
+musica.pause();
+musica.currentTime = 0;
+
+somTensao.pause();
+somTensao.currentTime = 0;
+
+if (dificuldade === "Difícil") {
+    somTensao.play();
+} else {
     musica.play();
+}
 }
 
 function exibirRegras() {
@@ -126,12 +140,23 @@ musica.loop = true;
 
 const somDerrota = new Audio("Som/defeat_sound.mp3");
 
+
+const somVitoria = new Audio("Som/vitoria_sound.wav");
+
+const somTensao = new Audio ("Som/musica_tensao1.mp3");
+somTensao.loop = true;
+
 function fecharRegras() {
   const regras = document.getElementById('regras');
   regras.style.display = 'none';
   document.body.style.overflow = '';
   temporizador(1000);
-musica.play();
+ if (dificuldade === "Difícil") {
+      somTensao.play();
+  } else {
+      musica.play();
+  }
+
 }
 
 // 5. Ajuste crucial na função criarTabela para ler o array linear corretamente
@@ -213,8 +238,12 @@ function criarTabela() {
             if (vidasRestantes == 0) {
               pararTemporizador();
               musica.pause();
-              musica.currentTime = 0;
+    musica.currentTime = 0;
 
+    somTensao.pause();
+    somTensao.currentTime = 0;
+
+    somDerrota.currentTime = 0;
     somDerrota.play();
             }
           }
@@ -292,3 +321,9 @@ meuIntervalo = setInterval(() => {
 
 }, 1000);
 }
+
+somTensao.addEventListener("timeupdate", () => {
+    if (somTensao.currentTime >= 42) {
+        somTensao.currentTime = 0;
+    }
+});
