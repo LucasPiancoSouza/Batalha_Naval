@@ -11,6 +11,7 @@
   --peso-paragrafo: 400;
   --estilo-paragrafo: normal;
   --tamanho-optico-paragrafo: auto;
+  --tamanho-tabuleiro: min(68vw, 560px);
 }
 
 * {
@@ -67,17 +68,17 @@ body {
 }
 
 .tabuleiro-jogo {
-  width: min(68vw, 560px);
+  width: var(--tamanho-tabuleiro);
+  height: var(--tamanho-tabuleiro);
 }
 
 .tabuleiro-jogo table {
   width: 100%;
+  height: 100%;
   border-collapse: collapse;
   table-layout: fixed;
   overflow: hidden;
   background-color: rgba(218, 218, 218, 0.704);
-  border-radius: 30px;
-
 }
 
 .tabuleiro-jogo td {
@@ -188,7 +189,7 @@ body {
 .informacoes-jogo {
   width: min(22vw, 260px);
   min-width: 180px;
-  min-height: 92vh;
+  height: var(--tamanho-tabuleiro);
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -260,13 +261,17 @@ body {
   .btnVoltarMenu,
   .btn-fechar-regras,
   .btn-resetar {
-    width: auto;
+    width:auto;
     font-size: 1rem;
   }
 
   .tabuleiro-jogo,
   .informacoes-jogo {
-    width: 95vw;
+    width: 90vw;
+  }
+
+  .tabuleiro-jogo {
+    height: 95vw;
   }
 
   .tabuleiro-jogo td {
@@ -274,10 +279,11 @@ body {
   }
 
   .informacoes {
-    grid-template-columns: 1fr;
+    height: auto;
   }
 
   .informacoes-jogo {
+    height: auto;
     min-height: auto;
     gap: 1.25rem;
   }
@@ -310,6 +316,12 @@ body {
    text-align:center;
    background-color:black;
 }
+.painel-menu{
+  width: 60vw;
+}
+  .informacoes p{
+    font-size: 2rem;
+  }
 }
 
 @media (min-width:481px) and (max-width:1024px) {
@@ -328,24 +340,26 @@ body {
     width: min(85vw, 560px);
   }
 
+  .tabuleiro-jogo {
+    height: min(85vw, 560px);
+  }
+
   .informacoes-jogo {
+    height: auto;
     min-height: auto;
     gap: 1.25rem;
   }
-
-  .informacoes {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .informacoes{
+    height: auto;
   }
-
   .painel-menu,
   .painel-regras {
     width: min(90vw, 480px);
     padding: 1.5rem;
   }
   #tempo {
-    width: 100%;
-    font-size: 4vh;
+    width: auto;
+    font-size: 2vh;
     font-family: Arial, sans-serif;
     font-weight: bold;
     color: rgb(255, 255, 255);
@@ -354,7 +368,17 @@ body {
    text-align:center;
    background-color:black;
 }
-
+  .botao,
+  .btnContinuar,
+  .btnVoltarMenu,
+  .btn-fechar-regras,
+  .btn-resetar {
+    width:30vw;
+    height: 6vh;
+    font-size: 2rem;
+    text-align: center;
+  }
+  .informacoes p{
+    font-size: 2rem;
+  }
 }
-
-

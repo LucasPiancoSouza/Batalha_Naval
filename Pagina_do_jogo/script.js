@@ -107,6 +107,9 @@ function resetarJogo() {
   id_pontuacao = document.getElementById("pontuacao");
   id_pontuacao.innerText = "Pontuação: "+pontuacao;
   totalSegundos = 0;
+  let id_tempo = document.getElementById("tempo");
+  id_tempo.innerText = "Tempo: 0:00";
+  temporizador();
 }
 
 function exibirRegras() {
@@ -118,8 +121,8 @@ function exibirRegras() {
 function fecharRegras() {
   const regras = document.getElementById('regras');
   regras.style.display = 'none';
-  document.body.style.overflow = 'hidden';
-  temporizador();
+  document.body.style.overflow = '';
+  temporizador(1000);
 }
 
 // 5. Ajuste crucial na função criarTabela para ler o array linear corretamente
@@ -187,20 +190,30 @@ function criarTabela() {
         imagemFrente.style.display = 'none';
         imagemVerso.style.display = 'block';
         if (galeria[indiceAssegurado] == "bomba"){
+          qtd_bombas -= 1;
+          document.getElementById("bombas").innerText = "Bombas: " + qtd_bombas;
           if(pontuacao >= 10){
               pontuacao -= 10;
-              id_pontuacao = document.getElementById("pontuacao");
+              let id_pontuacao = document.getElementById("pontuacao");
               id_pontuacao.innerText = "Pontuação: "+pontuacao; 
           }
           if(vidasRestantes > 0){
             vidasRestantes--;
             let id_img_vidas = document.getElementById("vida-"+vidasRestantes);
             id_img_vidas.style.display = 'none';
+            if (vidasRestantes == 0) {
+              pararTemporizador();
+            }
           }
-        }if(galeria[indiceAssegurado] == "barco"){
+        }else if(galeria[indiceAssegurado] == "barco"){
           pontuacao += 10;
-          id_pontuacao = document.getElementById("pontuacao");
+          let id_pontuacao = document.getElementById("pontuacao");
           id_pontuacao.innerText = "Pontuação: "+pontuacao;
+          qtd_barcos -= 1;
+          document.getElementById("barcos").innerText = "Barcos: " + qtd_barcos;
+        }else{
+          qtd_aguas -= 1;
+          document.getElementById("agua").innerText = "Águas: " + qtd_aguas;
         }
         
         contadorJogadas += 1;
@@ -216,9 +229,8 @@ function criarTabela() {
 
   // Atualiza os textos do painel de informações uma única vez após o término do loop
   document.getElementById("bombas").innerText = "Bombas: " + qtd_bombas;
-  document.getElementById("barcos").innerText = "Barcos: " + qtd_barcos;
   document.getElementById("agua").innerText = "Águas: " + qtd_aguas;
-
+  document.getElementById("barcos").innerText = "Barcos: " + qtd_barcos;
   cenario.appendChild(tabela);
 }
 
@@ -226,12 +238,14 @@ function abrirMenu() {
   const menu = document.getElementById('menu');
   menu.style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  pararTemporizador();
 }
 
 function fecharMenu() {
   const menu = document.getElementById('menu');
   menu.style.display = 'none';
   document.body.style.overflow = '';
+  temporizador();
 }
 
 function mudarParaMenu() {
@@ -239,8 +253,16 @@ function mudarParaMenu() {
 }
 
 let totalSegundos = 0;
+let meuIntervalo;
+
+function pararTemporizador() {
+  clearInterval(meuIntervalo);
+  meuIntervalo = null;
+}
+
 function temporizador(){
-setInterval(() => {
+pararTemporizador();
+meuIntervalo = setInterval(() => {
     totalSegundos++;
 
     let minutos = Math.floor(totalSegundos / 60);
@@ -250,9 +272,8 @@ setInterval(() => {
         segundos = "0" + segundos;
     }
 
-    document.getElementById("tempo").textContent =
+    document.getElementById("tempo").innerText =
         "Tempo: "+minutos + ":" + segundos;
 
 }, 1000);
 }
-
