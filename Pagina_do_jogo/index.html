@@ -14,16 +14,28 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-  <audio id="som" src="Som/piratesom.mp3"></audio>
+
 
     <div class="pagina-container">
       <button id="btnAbrirMenu" class="btnAbrirMenu">
         <img src="img/menu.png" alt="Menu" />
       </button>
+ 
 
       <main id="area-jogo" class="area-jogo">
-        <div id="tabuleiro-jogo" class="tabuleiro-jogo">
+      <section class="Maquina" id="Maquina" style="display: none;">
+        <h2>Máquina</h2>
+        <br>
+        <p class="pontuacaoMaquina" id="pontuacaoMaquina">Pontuação: 0</p>
+            <br>
+            <p class="jogadasMaquina" id="jogadasMaquina">Jogadas: 0</p>
+            <br>
+            <div class="vidasMaquina" id="vidasMaquina">
 
+            </div>
+      </section>
+        <div id="tabuleiro-jogo" class="tabuleiro-jogo">
+          
         </div>
         <section id="informacoes-jogo" class="informacoes-jogo">
           <div class="informacoes" id="informacoes">

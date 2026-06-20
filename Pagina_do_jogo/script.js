@@ -29,6 +29,28 @@ let qtd_aguas = 0;
 let contadorJogadas = 0;
 let pontuacao = 0;
 let vidasRestantes = 0;
+let vidasMaquina = 0;
+
+const modoEscolhido = localStorage.getItem("modoJogo") || "";
+const valorMaquina = localStorage.getItem("Maquina") || "";
+const valorSolo = localStorage.getItem("Solo") || "";
+
+if(valorMaquina === "Maquina"){
+          let id_jogo = document.getElementById("Maquina");
+           id_jogo.style.display = "flex";
+}
+
+let modoJogo = "Solo";
+
+if (modoEscolhido === "maquina" || valorMaquina === "Maquina") {
+    modoJogo = "Maquina";
+} else if (modoEscolhido === "solo" || valorSolo === "Solo") {
+    modoJogo = "Solo";
+}
+
+let pontuacaoMaquina = 0;
+let contadorJogadasMaquina = 0;
+let jogadasMaquina = [];
 
 // 3. Função para sortear a quantidade dentro do intervalo
 function sortearQuantidade(min, max) {
@@ -104,6 +126,20 @@ function resetarJogo() {
   const elementoJogadas = document.getElementById('jogadas');
   elementoJogadas.innerText = 'Jogadas: ' + contadorJogadas;
   pontuacao = 0;
+
+  pontuacaoMaquina = 0;
+  contadorJogadasMaquina = 0;
+  jogadasMaquina = [];
+
+  const pontMaquina = document.getElementById("pontuacaoMaquina");
+  if(pontMaquina){
+      pontMaquina.innerText = "Pontuação: 0";
+  }
+
+  const jogMaquina = document.getElementById("jogadasMaquina");
+  if(jogMaquina){
+      jogMaquina.innerText = "Jogadas: 0";
+  }
   id_pontuacao = document.getElementById("pontuacao");
   id_pontuacao.innerText = "Pontuação: "+pontuacao;
   totalSegundos = 0;
@@ -174,6 +210,7 @@ function criarTabela() {
 
   const config = CONFIG_DIFICULDADE[dificuldade];
         vidasRestantes = config.vidas;
+        vidasMaquina = config.vidas;
         let contador_vidas = 0;
         let id_vidas = document.getElementById("vidas")
         id_vidas.innerText = "";
@@ -184,6 +221,24 @@ function criarTabela() {
           img_vidas.id = "vida-"+contador_vidas;
           id_vidas.appendChild(img_vidas);
           contador_vidas++;
+        }
+        let contador_vidas_maquina = 0;
+        let id_vidas_maquina = document.getElementById("vidasMaquina");
+
+        if(id_vidas_maquina){
+          id_vidas_maquina.innerText = "";
+
+          while(contador_vidas_maquina < vidasMaquina){
+            let imgVida = document.createElement("img");
+
+            imgVida.className = "coracoes";
+            imgVida.src = "img/vidas.png";
+            imgVida.id = "vidaMaquina-"+ contador_vidas_maquina;
+
+            id_vidas_maquina.appendChild(imgVida);
+
+            contador_vidas_maquina++;
+          }
         }
 
   for (let i = 0; i < 10; i++) {
@@ -201,6 +256,7 @@ function criarTabela() {
       // Criar o elemento do Verso (O que está escondido)
       const imagemVerso = document.createElement('img');
       imagemVerso.style.display = "none"; // Começa escondido
+      imagemVerso.id =  `verso-${i}-${j}`;
 
       // Define o tipo correto baseado no array embaralhado
       if (tipoItem === "bomba") {
@@ -260,6 +316,12 @@ function criarTabela() {
         
         contadorJogadas += 1;
         document.getElementById('jogadas').innerText = 'Jogadas: ' + contadorJogadas;
+        if(modoJogo === "Maquina"){
+
+          setTimeout(() => {
+              jogadaMaquina();
+          }, 500);
+        }
       });
         
       // IMPORTANTE: Adiciona ambos na ordem correta dentro da célula atual
@@ -327,3 +389,71 @@ somTensao.addEventListener("timeupdate", () => {
         somTensao.currentTime = 0;
     }
 });
+function jogadaMaquina(){
+
+    let indice;
+
+    do{
+        indice = Math.floor(Math.random() * 100);
+    }
+    while(jogadasMaquina.includes(indice));
+
+    jogadasMaquina.push(indice);
+
+    let item = galeria[indice];
+
+    let linha = Math.floor(indice / 10);
+    let coluna = indice % 10;
+
+    let frente = document.getElementById(`frente-${linha}-${coluna}`);
+
+    let verso = document.getElementById(
+    `verso-${linha}-${coluna}`
+);
+  
+    if(frente){
+      frente.style.display = "none";
+    }
+
+    if(item === "barco"){
+        pontuacaoMaquina += 10;
+    }
+    else if(item === "bomba"){
+        pontuacaoMaquina = Math.max(
+            0,
+            pontuacaoMaquina -= 10
+        );
+        if (vidasMaquina > 0){
+          vidasMaquina--;
+          let coracao = document.getElementById("vidaMaquina-"+vidasMaquina);
+          coracao.style.display = "none";
+          if(frente && verso){
+
+              frente.style.display = "none";
+
+              verso.style.display = "block";
+}
+        }
+    }
+
+    contadorJogadasMaquina++;
+
+    const pontMaquina =
+        document.getElementById("pontuacaoMaquina");
+
+    if(pontMaquina){
+        pontMaquina.innerText =
+            "Pontuação: " + pontuacaoMaquina;
+    }
+
+    const jogMaquina =
+        document.getElementById("jogadasMaquina");
+
+    if(jogMaquina){
+        jogMaquina.innerText =
+            "Jogadas: " + contadorJogadasMaquina;
+    }
+
+    console.log("Máquina escolheu:", indice);
+    console.log("Máquina encontrou:", item);
+}

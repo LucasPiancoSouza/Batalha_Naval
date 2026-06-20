@@ -62,6 +62,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 1rem;
   padding: 1rem;
   background-color: #00000069;
@@ -70,6 +71,8 @@ body {
 .tabuleiro-jogo {
   width: var(--tamanho-tabuleiro);
   height: var(--tamanho-tabuleiro);
+  flex: 0 0 auto;
+  margin: 0 auto;
 }
 
 .tabuleiro-jogo table {
@@ -186,55 +189,80 @@ body {
   color: white;
 }
 
-.informacoes-jogo {
+.informacoes-jogo,
+.Maquina {
   width: min(22vw, 260px);
+  max-width: 260px;
   min-width: 180px;
   height: var(--tamanho-tabuleiro);
-  padding: 1rem;
+  padding: 0.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 2vh;
-  background-color: rgba(204, 200, 200, 0.782);
+  align-items: stretch;
+  border-radius: 1.2vh;
+  background-color: rgba(204, 200, 200, 0.82);
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  margin: 0 auto;
 }
 
+.Maquina h2 {
+  text-align: center;
+  margin-bottom: 0.25rem;
+  font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+}
 
+.pontuacaoMaquina,
+.jogadasMaquina,
 .pontuacao,
 .bombas,
 .agua,
 .barcos,
 .jogadas {
   font-family: var(--fonte-paragrafo);
-  font-size: 1.5rem;
-  font-weight:500;
+  font-size: clamp(0.95rem, 1.15vw, 1.4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0;
 }
+
 
 .div-resetar {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-top: auto;
 }
 
 .btn-resetar {
-  width: min(100%, 160px);
+  width: min(100%, 170px);
   min-height: 3vh;
-  padding: var(--button-padding);
+  padding: 0.75rem 1rem;
   border: none;
   border-radius: var(--button-radius);
   background-color: rgba(220, 0, 0, 0.8);
   color: white;
   font-family: var(--fonte-paragrafo);
+  font-size: 1rem;
   cursor: pointer;
 }
-.vidas{
+.vidas,
+.vidasMaquina {
   width: 100%;
-  height: 15vh;
+  min-height: 3rem;
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.2rem;
 }
-.coracoes{
+
+.coracoes {
   width: auto;
-  height: 8vh;
+  height: clamp(1.8rem, 4.5vw, 3rem);
   position: relative;
+  object-fit: contain;
 }
 #tempo {
     font-size: 4vh;
@@ -247,6 +275,18 @@ body {
    background-color:black;
 }
 @media (max-width: 480px) {
+  .informacoes-jogo,
+.Maquina {
+  width: min(55vw, 260px);
+  min-width: 180px;
+  max-width: 260px;
+  height: var(--tamanho-tabuleiro);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2vh;
+  background-color: rgba(204, 200, 200, 0.782);
+}
   .area-jogo {
     flex-direction: column;
     padding-top: 5rem;
@@ -266,12 +306,20 @@ body {
   }
 
   .tabuleiro-jogo,
-  .informacoes-jogo {
+  .informacoes-jogo,
+  .Maquina {
     width: 90vw;
+    max-width: 90vw;
   }
 
   .tabuleiro-jogo {
     height: 95vw;
+  }
+
+  .informacoes-jogo,
+  .Maquina {
+    height: auto;
+    min-height: 0;
   }
 
   .tabuleiro-jogo td {
@@ -288,13 +336,17 @@ body {
     gap: 1.25rem;
   }
 
-  .pontuacao,
-  .bombas,
-  .agua,
-  .barcos,
-  .jogadas {
-    font-size: 1.25rem;
-  }
+.pontuacaoMaquina,
+.jogadasMaquina,
+.pontuacao,
+.bombas,
+.agua,
+.barcos,
+.jogadas {
+  font-family: var(--fonte-paragrafo);
+  font-size: 3vh;
+  font-weight: 500;
+}
   .painel-regras {
   width: min(90vw, 560px);
   padding: 2rem;
@@ -325,6 +377,21 @@ body {
 }
 
 @media (min-width:481px) and (max-width:1024px) {
+  .informacoes-jogo,
+.Maquina {
+  width: auto;
+  min-width: 180px;
+  max-width: 260px;
+  height: var(--tamanho-tabuleiro);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2vh;
+  background-color: rgba(204, 200, 200, 0.782);
+}
+.coracoes{
+ height: 7vh;
+}
   .area-jogo {
     flex-direction: column;
     padding-top: 5rem;
@@ -336,17 +403,20 @@ body {
   }
 
   .tabuleiro-jogo,
-  .informacoes-jogo {
+  .informacoes-jogo,
+  .Maquina {
     width: min(85vw, 560px);
+    max-width: 560px;
   }
 
   .tabuleiro-jogo {
     height: min(85vw, 560px);
   }
 
-  .informacoes-jogo {
+  .informacoes-jogo,
+  .Maquina {
     height: auto;
-    min-height: auto;
+    min-height: 0;
     gap: 1.25rem;
   }
   .informacoes{
@@ -378,6 +448,17 @@ body {
     font-size: 2rem;
     text-align: center;
   }
+.pontuacaoMaquina,
+.jogadasMaquina,
+.pontuacao,
+.bombas,
+.agua,
+.barcos,
+.jogadas {
+  font-family: var(--fonte-paragrafo);
+  font-size: 3vh;
+  font-weight: 500;
+}
   .informacoes p{
     font-size: 2rem;
   }

@@ -13,13 +13,18 @@
 <body>
     <section class="container" id="container">
         <h1 class="Titulo">Batalha Naval</h1>
+        <br>
             <div class="menu_iniciar" id="menu_iniciar">
-                <button class="btnIniciar" id="btnIniciar" onclick="mudar_para_jogo()" disabled>
-                    <p>Começar</p>
+                <button class="btnMaquina" id="btnMaquina" onclick="armazenar_maquina()" value="Maquina">
+                    <p>1 vs Máquina</p>
+                </button>
+                <br>
+                <button class="btnIniciar" id="btnIniciar" onclick="armazenar_solo()" value="Solo" >
+                    <p>Modo Solo</p>
                 </button>
             </div>
             <br>
-            <select class="dificuldade" id="dificuldade" onchange="armezenar_Dificuldade()">
+            <select class="dificuldade" id="dificuldade" onchange="armezenar_Dificuldade()" style="display: none;">
                 <option value="">Selecione a Dificuldade</option>
                 <option value="Fácil">Fácil</option>
                 <option value="Médio">Médio</option>

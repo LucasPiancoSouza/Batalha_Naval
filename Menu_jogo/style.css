@@ -39,15 +39,14 @@ body{
     align-items: center;
     flex-direction: column;
     width: auto;
-    gap: 2vh;
+    gap: 1vh;
     height: auto;
     border-radius: 0.5vw;
 }
-.btnIniciar{
+.btnIniciar,.btnMaquina{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5vh;
     width: 15vw;
     height: 9vh;
     border: none;
@@ -62,7 +61,7 @@ body{
     font-size: 8vh;
     color:white;
 }
-.btnIniciar p{
+.btnIniciar p, .btnMaquina p{
     font-family: var(--fonte-paragrafo);
     font-optical-sizing: var(--tamanho-optico-paragrafo);
     font-weight: var(--peso-paragrafo);
@@ -112,7 +111,7 @@ body{
     font-size: 6vh;
     color:white;
 }
-    .btnIniciar{
+    .btnIniciar, .btnMaquina{
     justify-content: center;
     align-items: center;
     margin-top: 5vh;
@@ -123,7 +122,7 @@ body{
     background-color: rgba(184, 8, 8, 0.877);
     color:white;
 }
-.btnIniciar p{
+.btnIniciar p, .btnMaquina p{
     font-size: 5vw;
 }
 .dificuldade{
@@ -137,7 +136,7 @@ body{
 }
 }
 @media (min-width: 481px) and (max-width: 767px) {
-    .btnIniciar{
+    .btnIniciar, .btnMaquina{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,7 +148,7 @@ body{
     background-color: rgba(184, 8, 8, 0.877);
     color:white;
 }
-.btnIniciar p{
+.btnIniciar p, .btnMaquina p{
     font-size: 3vw;
 }
 .dificuldade{
@@ -163,7 +162,7 @@ body{
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {
-    .btnIniciar{
+    .btnIniciar, .btnMaquina{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,7 +174,7 @@ body{
     background-color: rgba(184, 8, 8, 0.877);
     color:white;
 }
-.btnIniciar p{
+.btnIniciar p, .btnMaquina p{
     font-size: 3vw;
 }   
 .dificuldade{
