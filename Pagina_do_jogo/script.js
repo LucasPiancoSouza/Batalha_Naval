@@ -30,6 +30,7 @@ let contadorJogadas = 0;
 let pontuacao = 0;
 let vidasRestantes = 0;
 let vidasMaquina = 0;
+let jogoAtivo = true;
 
 const modoEscolhido = localStorage.getItem("modoJogo") || "";
 const valorMaquina = localStorage.getItem("Maquina") || "";
@@ -116,6 +117,7 @@ function configurarEventos() {
 }
 
 function resetarJogo() {
+  jogoAtivo = true;
   const tabuleiro = document.getElementById('tabuleiro-jogo');
   tabuleiro.innerText = '';
   
@@ -277,6 +279,8 @@ function criarTabela() {
       imagemFrente.classList.add('carta-frente');
       // Evento de clique isolado por célula
       imagemFrente.addEventListener('click', () => {
+        if (!jogoAtivo) return;
+
         imagemFrente.style.display = 'none';
         imagemVerso.style.display = 'block';
         if (galeria[indiceAssegurado] == "bomba"){
@@ -291,16 +295,8 @@ function criarTabela() {
             vidasRestantes--;
             let id_img_vidas = document.getElementById("vida-"+vidasRestantes);
             id_img_vidas.style.display = 'none';
-            if (vidasRestantes == 0) {
-              pararTemporizador();
-              musica.pause();
-    musica.currentTime = 0;
-
-    somTensao.pause();
-    somTensao.currentTime = 0;
-
-    somDerrota.currentTime = 0;
-    somDerrota.play();
+            if (vidasRestantes == 0 || vidasMaquina == 0 ) {
+              encerrarPartida();
             }
           }
         }else if(galeria[indiceAssegurado] == "barco"){
@@ -316,11 +312,13 @@ function criarTabela() {
         
         contadorJogadas += 1;
         document.getElementById('jogadas').innerText = 'Jogadas: ' + contadorJogadas;
-        if(modoJogo === "Maquina"){
+        if(modoJogo === "Maquina" && jogoAtivo){
 
           setTimeout(() => {
-              jogadaMaquina();
-          }, 500);
+              if (jogoAtivo) {
+                jogadaMaquina();
+              }
+          }, 1000);
         }
       });
         
@@ -366,6 +364,20 @@ function pararTemporizador() {
   meuIntervalo = null;
 }
 
+function encerrarPartida() {
+  if (!jogoAtivo) return;
+  jogoAtivo = false;
+  pararTemporizador();
+  musica.pause();
+  musica.currentTime = 0;
+
+  somTensao.pause();
+  somTensao.currentTime = 0;
+
+  somDerrota.currentTime = 0;
+  somDerrota.play();
+}
+
 function temporizador(){
 pararTemporizador();
 meuIntervalo = setInterval(() => {
@@ -390,6 +402,7 @@ somTensao.addEventListener("timeupdate", () => {
     }
 });
 function jogadaMaquina(){
+    if (!jogoAtivo) return;
 
     let indice;
 
@@ -415,6 +428,10 @@ function jogadaMaquina(){
       frente.style.display = "none";
     }
 
+    if(frente && verso){
+      verso.style.display = "block";
+    }
+
     if(item === "barco"){
         pontuacaoMaquina += 10;
     }
@@ -427,12 +444,9 @@ function jogadaMaquina(){
           vidasMaquina--;
           let coracao = document.getElementById("vidaMaquina-"+vidasMaquina);
           coracao.style.display = "none";
-          if(frente && verso){
-
-              frente.style.display = "none";
-
-              verso.style.display = "block";
-}
+          if (vidasMaquina === 0) {
+            encerrarPartida();
+          }
         }
     }
 
