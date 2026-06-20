@@ -58,21 +58,21 @@ body {
 }
 
 .area-jogo {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: #00000069;
+  gap: 0.35rem;
+  padding: 0.75rem;
+  background-color: #00000067;
 }
 
 .tabuleiro-jogo {
   width: var(--tamanho-tabuleiro);
   height: var(--tamanho-tabuleiro);
   flex: 0 0 auto;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .tabuleiro-jogo table {
@@ -191,26 +191,32 @@ body {
 
 .informacoes-jogo,
 .Maquina {
-  width: min(22vw, 260px);
-  max-width: 260px;
-  min-width: 180px;
+  width: clamp(170px, 18vw, 220px);
+  max-width: 220px;
+  min-width: 150px;
   height: var(--tamanho-tabuleiro);
-  padding: 0.75rem;
+  padding: 0.45rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  border-radius: 1.2vh;
+  border-radius: 0.9rem;
   background-color: rgba(204, 200, 200, 0.82);
   box-sizing: border-box;
   flex: 0 0 auto;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .Maquina h2 {
   text-align: center;
   margin-bottom: 0.25rem;
   font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+}
+
+.informacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .pontuacaoMaquina,
@@ -221,7 +227,7 @@ body {
 .barcos,
 .jogadas {
   font-family: var(--fonte-paragrafo);
-  font-size: clamp(0.95rem, 1.15vw, 1.4rem);
+  font-size: clamp(0.9rem, 1vw, 1.3rem);
   font-weight: 500;
   line-height: 1.1;
   margin: 0;
@@ -265,14 +271,14 @@ body {
   object-fit: contain;
 }
 #tempo {
-    font-size: 4vh;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    padding: 3vh;
-    border-radius: 10px;
-   text-align:center;
-   background-color:black;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  padding: 0.8rem;
+  border-radius: 10px;
+  text-align: center;
+  background-color: black;
 }
 @media (max-width: 480px) {
   .informacoes-jogo,
@@ -444,7 +450,7 @@ body {
   .btn-fechar-regras,
   .btn-resetar {
     width:30vw;
-    height: 6vh;
+    height: auto;
     font-size: 2rem;
     text-align: center;
   }

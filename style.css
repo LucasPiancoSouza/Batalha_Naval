@@ -43,9 +43,10 @@ body {
 }
 
 .titulo{
-    font-size:30px;
+    font-size:4.5rem;
     text-align: center;
-    font-family: var(--fonte-titulo);
+    font-family: "Black-ops-one-regular", system-ui;
+      font-weight: 600;
     color:white;
 }
 
@@ -94,6 +95,13 @@ width: 97%;
         width: 65%;   
         height: auto;    
     }
+    .titulo{
+    font-size:2.5rem;
+    text-align: center;
+    font-family: "Black-ops-one-regular", system-ui;
+      font-weight: 600;
+    color:white;
+}
 }
 /*Celulares grandes/ tablets (retrato)*/
 @media (min-width: 577px) and (max-width:767px){
