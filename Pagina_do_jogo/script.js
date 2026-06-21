@@ -1,6 +1,9 @@
 // 1. Pegar a dificuldade guardada no localStorage (se não houver, define 'fácil' como padrão)
 let dificuldade = localStorage.getItem("dificuldade") || "Médio";
 console.log("Dificuldade selecionada:", dificuldade);
+let jogador = localStorage.getItem("nome");
+
+document.getElementById("jogador").innerText = "Pirata "+jogador;
 
 // 2. Objeto de configuração que você sugeriu
 const CONFIG_DIFICULDADE = {
@@ -31,6 +34,7 @@ let pontuacao = 0;
 let vidasRestantes = 0;
 let vidasMaquina = 0;
 let jogoAtivo = true;
+let maquinaPensando = false;
 
 const modoEscolhido = localStorage.getItem("modoJogo") || "";
 const valorMaquina = localStorage.getItem("Maquina") || "";
@@ -118,7 +122,11 @@ function configurarEventos() {
 
 function resetarJogo() {
   jogoAtivo = true;
+  maquinaPensando = false;
   const tabuleiro = document.getElementById('tabuleiro-jogo');
+  if (tabuleiro) {
+    tabuleiro.classList.remove('bloqueado');
+  }
   tabuleiro.innerText = '';
   
   // No reset, chamamos a preparação de novo para sortear novos valores!
@@ -279,7 +287,7 @@ function criarTabela() {
       imagemFrente.classList.add('carta-frente');
       // Evento de clique isolado por célula
       imagemFrente.addEventListener('click', () => {
-        if (!jogoAtivo) return;
+        if (!jogoAtivo || maquinaPensando) return;
 
         imagemFrente.style.display = 'none';
         imagemVerso.style.display = 'block';
@@ -295,7 +303,8 @@ function criarTabela() {
             vidasRestantes--;
             let id_img_vidas = document.getElementById("vida-"+vidasRestantes);
             id_img_vidas.style.display = 'none';
-            if (vidasRestantes == 0 || vidasMaquina == 0 ) {
+            alert("Perdeu uma vida, só restam: "+vidasRestantes);
+            if (vidasRestantes == 0 ) {
               encerrarPartida();
             }
           }
@@ -313,6 +322,11 @@ function criarTabela() {
         contadorJogadas += 1;
         document.getElementById('jogadas').innerText = 'Jogadas: ' + contadorJogadas;
         if(modoJogo === "Maquina" && jogoAtivo){
+          maquinaPensando = true;
+          const tabuleiro = document.getElementById('tabuleiro-jogo');
+          if (tabuleiro) {
+            tabuleiro.classList.add('bloqueado');
+          }
 
           setTimeout(() => {
               if (jogoAtivo) {
@@ -402,7 +416,7 @@ somTensao.addEventListener("timeupdate", () => {
     }
 });
 function jogadaMaquina(){
-    if (!jogoAtivo) return;
+    if (!jogoAtivo || !maquinaPensando) return;
 
     let indice;
 
@@ -467,6 +481,13 @@ function jogadaMaquina(){
         jogMaquina.innerText =
             "Jogadas: " + contadorJogadasMaquina;
     }
+
+    const tabuleiro = document.getElementById('tabuleiro-jogo');
+    if (tabuleiro && tabuleiro.classList.contains('bloqueado')) {
+      tabuleiro.classList.remove('bloqueado');
+    }
+
+    maquinaPensando = false;
 
     console.log("Máquina escolheu:", indice);
     console.log("Máquina encontrou:", item);

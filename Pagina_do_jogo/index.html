@@ -14,14 +14,14 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-
-
     <div class="pagina-container">
-      <button id="btnAbrirMenu" class="btnAbrirMenu">
-        <img src="img/menu.png" alt="Menu" />
-      </button>
- 
-
+      <nav>
+        <button id="btnAbrirMenu" class="btnAbrirMenu">
+          <img src="img/menu.png" alt="Menu" />
+        </button>
+        <p id="tempo">Tempo: 0:00</p>
+      </nav>
+     
       <main id="area-jogo" class="area-jogo">
       <section class="Maquina" id="Maquina" style="display: none;">
         <h2>Máquina</h2>
@@ -39,7 +39,9 @@
         </div>
         <section id="informacoes-jogo" class="informacoes-jogo">
           <div class="informacoes" id="informacoes">
-            <p id="tempo">Tempo: 0:00</p>
+            <p class="jogador" id="jogador">
+              
+            </p>
             <br>
             <p class="pontuacao" id="pontuacao">Pontuação: 0</p>
             <br />

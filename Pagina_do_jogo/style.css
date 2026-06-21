@@ -41,8 +41,8 @@ body {
 }
 
 .btnAbrirMenu {
+  top: 2vh;
   position: fixed;
-  top: 1rem;
   left: 1rem;
   z-index: 5;
   border: none;
@@ -99,6 +99,11 @@ body {
 
 .carta-frente {
   cursor: pointer;
+}
+
+.tabuleiro-jogo.bloqueado {
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .menu{
@@ -198,7 +203,6 @@ body {
   padding: 0.45rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: stretch;
   border-radius: 0.9rem;
   background-color: rgba(204, 200, 200, 0.82);
@@ -266,11 +270,17 @@ body {
 
 .coracoes {
   width: auto;
-  height: clamp(1.8rem, 4.5vw, 3rem);
+  height: clamp(2.5rem, 4.5vw, 3rem);
   position: relative;
   object-fit: contain;
 }
 #tempo {
+  position: absolute;
+  position: fixed;
+  top: 2vh;
+  z-index: 5;
+  background: transparent;
+  cursor: pointer;
   font-size: clamp(1rem, 1.8vw, 1.4rem);
   font-family: Arial, sans-serif;
   font-weight: bold;
@@ -279,6 +289,16 @@ body {
   border-radius: 10px;
   text-align: center;
   background-color: black;
+}
+nav{
+  display:flex ;
+  justify-content: flex-end;
+  margin-right: 1vw;
+}
+.jogador{
+  text-align: center;
+  font-weight: bold;
+  font-size: clamp(1.1rem, 1.7vw, 1.5rem);
 }
 @media (max-width: 480px) {
   .informacoes-jogo,
@@ -341,6 +361,11 @@ body {
     min-height: auto;
     gap: 1.25rem;
   }
+  .Maquina h2 {
+  text-align: center;
+  margin-bottom: 0.25rem;
+  font-size: clamp(1.5rem, 1.7vw, 2.5rem);
+}
 
 .pontuacaoMaquina,
 .jogadasMaquina,
@@ -350,7 +375,7 @@ body {
 .barcos,
 .jogadas {
   font-family: var(--fonte-paragrafo);
-  font-size: 3vh;
+    font-size: clamp(1.1rem, 1.2vw, 1.3rem);
   font-weight: 500;
 }
   .painel-regras {
@@ -365,20 +390,23 @@ body {
   text-align: center;
 }
 #tempo {
-    font-size: 4vh;
+    font-size: 1rem;
     font-family: Arial, sans-serif;
     font-weight: bold;
     color: rgb(255, 255, 255);
     padding: 2vh;
-    border-radius: 10px;
+    border-radius: 10px;  
    text-align:center;
    background-color:black;
 }
 .painel-menu{
   width: 60vw;
 }
-  .informacoes p{
-    font-size: 2rem;
+  .informacoes p, .Maquina p{
+    font-size: clamp(0.9rem, 1vw, 1.3rem);
+  }
+  #jogador{
+  font-size: clamp(1.5rem, 1.7vw, 2.5rem);
   }
 }
 
@@ -398,6 +426,9 @@ body {
 .coracoes{
  height: 7vh;
 }
+  #jogador{
+  font-size: clamp(1.5rem, 1.7vw, 2.5rem);
+  }
   .area-jogo {
     flex-direction: column;
     padding-top: 5rem;
@@ -462,10 +493,9 @@ body {
 .barcos,
 .jogadas {
   font-family: var(--fonte-paragrafo);
-  font-size: 3vh;
   font-weight: 500;
 }
-  .informacoes p{
-    font-size: 2rem;
+  .informacoes p, .Maquina p{
+  font-size: clamp(1.5rem, 1.7vw, 2.5rem);
   }
 }
