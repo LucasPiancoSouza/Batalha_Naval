@@ -104,14 +104,20 @@ function configurarEventos() {
   const botaoContinuar = document.getElementById('btnContinuar');
   const botaoVoltarMenu = document.getElementById('btnVoltarMenu');
   const botaoResetar = document.getElementById('btn-resetar');
+<<<<<<< HEAD
   const botaoResetarvitoria = document.getElementById('btn-resetar_Vi');
   const botaoResetarderrota = document.getElementById('btn-resetar_Dr');
+=======
+  const botaoResetarderrota = document.getElementById('btn-resetar_Dr');
+  const botaoResetarvitoria = document.getElementById('btn-resetar_Vi');
+>>>>>>> 9a838c78f9718b1d4b5fdb5457764131edd3be37
 
   if (botaoAbrirMenu) botaoAbrirMenu.addEventListener('click', abrirMenu);
   if (botaoFecharRegras) botaoFecharRegras.addEventListener('click', fecharRegras);
   if (botaoContinuar) botaoContinuar.addEventListener('click', fecharMenu);
   if (botaoVoltarMenu) botaoVoltarMenu.addEventListener('click', mudarParaMenu);
   if (botaoResetar) botaoResetar.addEventListener('click', resetarJogo);
+<<<<<<< HEAD
   if (botaoResetarvitoria) botaoResetarvitoria.addEventListener('click', resetarJogo_Vi);
   if (botaoResetarderrota) botaoResetarderrota.addEventListener('click', resetarJogo_Dr);
 
@@ -125,6 +131,10 @@ if (btnResetarDrMaquina) {
 if (btnResetarViMaquina) {
     btnResetarViMaquina.addEventListener('click', resetarJogo_Vi);
 }
+=======
+  if (botaoResetarderrota) botaoResetarderrota.addEventListener('click', resetarJogo_D);
+  if (botaoResetarvitoria) botaoResetarvitoria.addEventListener('click', resetarJogo_V);
+>>>>>>> 9a838c78f9718b1d4b5fdb5457764131edd3be37
 }
 
 function resetarJogo() {
@@ -310,7 +320,7 @@ function criarTabela() {
           qtd_barcos -= 1;
           document.getElementById("barcos").innerText = "Barcos: " + qtd_barcos;
 
-          if (qtd_barcos == 0) {
+          if (pontuacao == 100 ) {
             pararTemporizador();
             musica.pause();
             somTensao.pause();
@@ -498,6 +508,7 @@ if (pontos) {
   }, 500);
 }
 
+<<<<<<< HEAD
 function resetarJogo_Vi() {
     const telaVitoria = document.getElementById("vitoria");
 
@@ -517,3 +528,58 @@ function resetarJogo_Dr() {
 
     resetarJogo();
 }
+=======
+
+function resetarJogo_D() {
+  jogoAtivo = true;
+  maquinaPensando = false;
+
+  const tablero = document.getElementById('tabuleiro-jogo');
+  if (tablero) {
+    tablero.classList.remove('bloqueado');
+    tablero.innerHTML = '';
+  }
+
+  const derrota = document.getElementById("derrota");
+  const vitoria = document.getElementById("vitoria");
+
+  if (derrota) derrota.style.display = "none";
+  if (vitoria) vitoria.style.display = "none";
+
+  prepararGaleria();
+  criarTabela();
+
+  contadorJogadas = 0;
+  pontuacao = 0;
+
+  document.getElementById('jogadas').innerText = 'Jogadas: 0';
+  document.getElementById('pontuacao').innerText = 'Pontuação: 0';
+
+}
+
+function resetarJogo_V() {
+  jogoAtivo = true;
+  maquinaPensando = false;
+
+  const tablero = document.getElementById('tabuleiro-jogo');
+  if (tablero) {
+    tablero.classList.remove('bloqueado');
+    tablero.innerHTML = '';
+  }
+
+  const derrota = document.getElementById("derrota");
+  const vitoria = document.getElementById("vitoria");
+
+  if (derrota) derrota.style.display = "none";
+  if (vitoria) vitoria.style.display = "none";
+
+  prepararGaleria();
+  criarTabela();
+
+  contadorJogadas = 0;
+  pontuacao = 0;
+
+  document.getElementById('jogadas').innerText = 'Jogadas: 0';
+  document.getElementById('pontuacao').innerText = 'Pontuação: 0';
+}
+>>>>>>> 9a838c78f9718b1d4b5fdb5457764131edd3be37

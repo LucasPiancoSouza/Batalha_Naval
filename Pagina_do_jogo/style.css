@@ -11,7 +11,8 @@
   --peso-paragrafo: 400;
   --estilo-paragrafo: normal;
   --tamanho-optico-paragrafo: auto;
-  --tamanho-tabuleiro: min(68vw, 560px);
+  --tamanho-tabuleiro: min(90vw, 560px);
+  --largura-informacoes: clamp(200px, 18vw, 220px);
 }
 
 * {
@@ -263,7 +264,6 @@ body {
   min-height: 3rem;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: 0.2rem;
 }
 
@@ -325,26 +325,21 @@ nav{
   .btnContinuar,
   .btnVoltarMenu,
   .btn-fechar-regras,
-  .btn-resetar {
+  .btn-resetar,
+  .btn-resetar_Dr,
+  .btn-resetar_Vi {
     width:auto;
     font-size: 1rem;
   }
 
+  /* Small screens: make board and info panels same square size */
   .tabuleiro-jogo,
   .informacoes-jogo,
   .Maquina {
-    width: 90vw;
+    width: min(90vw, 480px);
+    height: min(90vw, 320px);
     max-width: 90vw;
-  }
-
-  .tabuleiro-jogo {
-    height: 95vw;
-  }
-
-  .informacoes-jogo,
-  .Maquina {
-    height: auto;
-    min-height: 0;
+    max-height: auto;
   }
 
   .tabuleiro-jogo td {
@@ -477,7 +472,7 @@ nav{
   .botao,
   .btnContinuar,
   .btnVoltarMenu,
-  .btn-fechar-regras {
+  .btn-fechar-regras{
     width:30vw;
     height: auto;
     font-size: 2rem;
@@ -646,7 +641,7 @@ nav{
   background-repeat: no-repeat;
   background-color:rgba(255,255,255,0.5);
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                        repeating-linear-gradient(90deg, #5c3a21, #5c3a21 40px, #4a2e1a 41px, #4a2e1a 45px);
+            repeating-linear-gradient(90deg, #5c3a21, #5c3a21 40px, #4a2e1a 41px, #4a2e1a 45px);
             border: 6px solid #362213;
             border-radius: 15px;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.5);
@@ -654,14 +649,14 @@ nav{
             color: #f5f5f5;
 }
 .tabuleiro-jogo {
- width: var(--tamanho-tabuleiro);
+  width: var(--tamanho-tabuleiro);
   height: var(--tamanho-tabuleiro);
   flex: 0 0 auto;
   margin: 0;
   padding: 10px;
-  background: rgba(10, 25, 30, 0.4); /* Fundo escuro bem transparente */
-  backdrop-filter: blur(8px);        /* Efeito de vidro fosco sobre o mar */
-  border: 4px solid #8B5A2B;         /* Moldura rústica cor de madeira */
+  background: rgba(10, 25, 30, 0.4);
+  backdrop-filter: blur(8px);
+  border: 4px solid #8B5A2B;
   border-radius: 12px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
 }
@@ -705,6 +700,7 @@ nav{
   color: rgb(255, 255, 255);
   font-weight: bold;
 }
+<<<<<<< HEAD
 
 .vitoria1 > div,
 .derrota1 > div {
@@ -731,4 +727,39 @@ nav{
 .btn-resetar:hover {
     transform: scale(1.05);
     background-color: rgba(255, 0, 0, 0.9);
+=======
+.btn-resetar_Dr {
+width: min(100%, 170px);
+  min-height: 3vh;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--button-radius);
+  background-color: rgba(220, 0, 0, 0.8);
+  color: white;
+  font-family: var(--fonte-paragrafo);
+  font-size: 1rem;
+  cursor: pointer;
+
+}
+.btn-resetar_Vi {
+width: min(100%, 170px);
+  min-height: 3vh;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--button-radius);
+  background-color: rgba(220, 0, 0, 0.8);
+  color: white;
+  font-family: var(--fonte-paragrafo);
+  font-size: 1rem;
+  cursor: pointer;
+}
+#container_vitoria,
+#container_derrota {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+>>>>>>> 9a838c78f9718b1d4b5fdb5457764131edd3be37
 }
