@@ -40,11 +40,13 @@ body {
     display:flex;
     flex-direction:column;
     z-index: 10;
+    margin-bottom: 10vh;
 }
 
 .titulo img{
     width:30vw;
     height: auto;
+    margin-top: -5vh;
 }
 
 #input-1 {
@@ -58,7 +60,6 @@ height: 5vh;
     outline: none;
     transition: all 0.3s ease;
     font-weight:bold;
-  
 }
 .bloco_botoes {
      display: flex;
