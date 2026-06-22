@@ -36,7 +36,7 @@ body {
     border-radius: 3vh;
     padding: 30px;
     width:26%;
-    height:50vh;
+    height:40vh;
     display:flex;
     flex-direction:column;
     z-index: 10;
@@ -44,7 +44,7 @@ body {
 }
 
 .titulo img{
-    width:30vw;
+    width:35vw;
     height: auto;
     margin-top: -5vh;
 }
@@ -100,6 +100,9 @@ height: 5vh;
       font-weight: 600;
     color:white;
 }
+.titulo img{
+    width:100vw;
+}
 }
 /*Celulares grandes/ tablets (retrato)*/
 @media (min-width: 577px) and (max-width:767px){
@@ -114,6 +117,9 @@ height: 5vh;
         width:45%;
         height:25%;
     }
+    .titulo img{
+    width:70vw;
+}
 }
 /*laptops/monitores comuns*/
 @media (min-width:992px) and (max-width:1199px) {
@@ -121,11 +127,7 @@ height: 5vh;
         width:45%;
         height:45%;
     }
+    .titulo img{
+    width:100vw;
 }
-/*desktops grandes/ telas 4k */ 
-@media (min-width:1200px) {
-     .container {
-        width:28%;
-        height:43%;
-    }
 }
