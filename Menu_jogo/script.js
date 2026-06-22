@@ -3,6 +3,9 @@ function armazenar_maquina(){
     localStorage.setItem("Maquina", maquina);
     localStorage.setItem("modoJogo", "maquina");
     localStorage.setItem("Solo", "");
+    if (!localStorage.getItem("dificuldade")) {
+        localStorage.setItem("dificuldade", "Médio"); // define Médio como padrão somente se ainda não houver dificuldade salva
+    }
     mudar_para_jogo();
 }
 
