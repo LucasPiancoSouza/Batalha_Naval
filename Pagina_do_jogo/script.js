@@ -293,7 +293,7 @@ function criarTabela() {
           qtd_barcos -= 1;
           document.getElementById("barcos").innerText = "Barcos: " + qtd_barcos;
 
-          if (qtd_barcos == 0) {
+          if (pontuacao == 100 ) {
             pararTemporizador();
             musica.pause();
             somTensao.pause();
