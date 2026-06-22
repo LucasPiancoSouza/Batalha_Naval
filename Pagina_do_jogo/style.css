@@ -325,7 +325,9 @@ nav{
   .btnContinuar,
   .btnVoltarMenu,
   .btn-fechar-regras,
-  .btn-resetar {
+  .btn-resetar,
+  .btn-resetar_Dr,
+  .btn-resetar_Vi {
     width:auto;
     font-size: 1rem;
   }
@@ -477,7 +479,7 @@ nav{
   .botao,
   .btnContinuar,
   .btnVoltarMenu,
-  .btn-fechar-regras {
+  .btn-fechar-regras{
     width:30vw;
     height: auto;
     font-size: 2rem;
@@ -704,4 +706,38 @@ nav{
   font-size: 4vh;
   color: rgb(255, 255, 255);
   font-weight: bold;
+}
+.btn-resetar_Dr {
+width: min(100%, 170px);
+  min-height: 3vh;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--button-radius);
+  background-color: rgba(220, 0, 0, 0.8);
+  color: white;
+  font-family: var(--fonte-paragrafo);
+  font-size: 1rem;
+  cursor: pointer;
+
+}
+.btn-resetar_Vi {
+width: min(100%, 170px);
+  min-height: 3vh;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--button-radius);
+  background-color: rgba(220, 0, 0, 0.8);
+  color: white;
+  font-family: var(--fonte-paragrafo);
+  font-size: 1rem;
+  cursor: pointer;
+}
+#container_vitoria,
+#container_derrota {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
 }
