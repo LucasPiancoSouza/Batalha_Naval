@@ -6,6 +6,12 @@ function login () {
 
 nome.placeholder = "Nome";
 nome.id = "input-1";
+nome.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        entrar();
+    }
+});
 formulario.appendChild(nome);
 id.appendChild(formulario);
 }
