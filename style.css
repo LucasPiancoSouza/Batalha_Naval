@@ -34,7 +34,7 @@ body {
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1); /* Uma bordinha sutil */
     border-radius: 3vh;
-    padding: 30px;
+    padding: 25px;
     width:26%;
     height:50vh;
     display:flex;
@@ -43,7 +43,7 @@ body {
 }
 
 .titulo img{
-    width:100vw;
+    width:30vw;
     height: auto;
 }
 

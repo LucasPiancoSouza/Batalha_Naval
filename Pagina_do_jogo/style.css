@@ -705,3 +705,30 @@ nav{
   color: rgb(255, 255, 255);
   font-weight: bold;
 }
+
+.vitoria1 > div,
+.derrota1 > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.btn-resetar_Dr,
+.btn-resetar_Vi {
+    width: 250px;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgba(220, 0, 0, 0.8);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-resetar:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 0, 0, 0.9);
+}

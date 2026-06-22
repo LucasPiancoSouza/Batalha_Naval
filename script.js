@@ -25,9 +25,3 @@ localStorage.setItem ("nome", nome);
 window.location.href = "Menu_jogo/index.html";
 
 }
-
-function contador (){
-contador = 0;
-
-
-}

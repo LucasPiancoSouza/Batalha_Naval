@@ -1,5 +1,5 @@
 // 1. Pegar a dificuldade guardada no localStorage (se não houver, define 'Médio' como padrão)
-let dificuldade = localStorage.getItem("dificuldade") || "Médio";
+let dificuldade = localStorage.getItem ("dificuldade") || "Médio";
 console.log("Dificuldade selecionada:", dificuldade);
 let jogador = localStorage.getItem("nome") || "Recruta";
 
@@ -104,12 +104,27 @@ function configurarEventos() {
   const botaoContinuar = document.getElementById('btnContinuar');
   const botaoVoltarMenu = document.getElementById('btnVoltarMenu');
   const botaoResetar = document.getElementById('btn-resetar');
+  const botaoResetarvitoria = document.getElementById('btn-resetar_Vi');
+  const botaoResetarderrota = document.getElementById('btn-resetar_Dr');
 
   if (botaoAbrirMenu) botaoAbrirMenu.addEventListener('click', abrirMenu);
   if (botaoFecharRegras) botaoFecharRegras.addEventListener('click', fecharRegras);
   if (botaoContinuar) botaoContinuar.addEventListener('click', fecharMenu);
   if (botaoVoltarMenu) botaoVoltarMenu.addEventListener('click', mudarParaMenu);
   if (botaoResetar) botaoResetar.addEventListener('click', resetarJogo);
+  if (botaoResetarvitoria) botaoResetarvitoria.addEventListener('click', resetarJogo_Vi);
+  if (botaoResetarderrota) botaoResetarderrota.addEventListener('click', resetarJogo_Dr);
+
+ const btnResetarDrMaquina = document.getElementById('btn-resetar_DrMaquina');
+const btnResetarViMaquina = document.getElementById('btn-resetar_ViMaquina');
+
+if (btnResetarDrMaquina) {
+    btnResetarDrMaquina.addEventListener('click', resetarJogo_Dr);
+}
+
+if (btnResetarViMaquina) {
+    btnResetarViMaquina.addEventListener('click', resetarJogo_Vi);
+}
 }
 
 function resetarJogo() {
@@ -159,6 +174,11 @@ function resetarJogo() {
   } else {
     musica.play();
   }
+  const telaVitoria = document.getElementById("vitoria");
+const telaDerrota = document.getElementById("derrota");
+
+if (telaVitoria) telaVitoria.style.display = "none";
+if (telaDerrota) telaDerrota.style.display = "none";
 }
 
 function exibirRegras() {
@@ -174,6 +194,7 @@ musica.loop = true;
 const somDerrota = new Audio("Som/defeat_sound.mp3");
 const somVitoria = new Audio("Som/vitoria_sound.wav");
 const somTensao = new Audio("Som/musica_tensao1.mp3");
+
 somTensao.loop = true;
 
 function fecharRegras() {
@@ -433,6 +454,30 @@ function jogadaMaquina() {
 
     maquinaPensando = false;
     console.log("Máquina escolheu:", indice);
+    
+    if (item === "barco") {
+    pontuacaoMaquina += 10;
+    barcosMaquina++;
+
+    if (barcosMaquina >= totalBarcosInicial) {
+        encerrarPartida();
+        mostrarDerrota();
+        return;
+    }
+}
+
+if (vidasMaquina === 0) {
+    pararTemporizador();
+
+    musica.pause();
+    musica.currentTime = 0;
+
+    somVitoria.play();
+
+    mostrarVitoria();
+    encerrarPartida();
+    return;
+}
 }
 
 function mostrarVitoria() {
@@ -451,4 +496,24 @@ if (pontos) {
   setTimeout(() => {
       pontos.classList.remove("piscarPontos");
   }, 500);
+}
+
+function resetarJogo_Vi() {
+    const telaVitoria = document.getElementById("vitoria");
+
+    if (telaVitoria) {
+        telaVitoria.style.display = "none";
+    }
+
+    resetarJogo();
+}
+
+function resetarJogo_Dr() {
+    const telaDerrota = document.getElementById("derrota");
+
+    if (telaDerrota) {
+        telaDerrota.style.display = "none";
+    }
+
+    resetarJogo();
 }
