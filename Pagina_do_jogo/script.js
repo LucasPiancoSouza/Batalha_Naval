@@ -104,37 +104,16 @@ function configurarEventos() {
   const botaoContinuar = document.getElementById('btnContinuar');
   const botaoVoltarMenu = document.getElementById('btnVoltarMenu');
   const botaoResetar = document.getElementById('btn-resetar');
-<<<<<<< HEAD
   const botaoResetarvitoria = document.getElementById('btn-resetar_Vi');
   const botaoResetarderrota = document.getElementById('btn-resetar_Dr');
-=======
-  const botaoResetarderrota = document.getElementById('btn-resetar_Dr');
-  const botaoResetarvitoria = document.getElementById('btn-resetar_Vi');
->>>>>>> 9a838c78f9718b1d4b5fdb5457764131edd3be37
 
   if (botaoAbrirMenu) botaoAbrirMenu.addEventListener('click', abrirMenu);
   if (botaoFecharRegras) botaoFecharRegras.addEventListener('click', fecharRegras);
   if (botaoContinuar) botaoContinuar.addEventListener('click', fecharMenu);
   if (botaoVoltarMenu) botaoVoltarMenu.addEventListener('click', mudarParaMenu);
   if (botaoResetar) botaoResetar.addEventListener('click', resetarJogo);
-<<<<<<< HEAD
-  if (botaoResetarvitoria) botaoResetarvitoria.addEventListener('click', resetarJogo_Vi);
-  if (botaoResetarderrota) botaoResetarderrota.addEventListener('click', resetarJogo_Dr);
-
- const btnResetarDrMaquina = document.getElementById('btn-resetar_DrMaquina');
-const btnResetarViMaquina = document.getElementById('btn-resetar_ViMaquina');
-
-if (btnResetarDrMaquina) {
-    btnResetarDrMaquina.addEventListener('click', resetarJogo_Dr);
-}
-
-if (btnResetarViMaquina) {
-    btnResetarViMaquina.addEventListener('click', resetarJogo_Vi);
-}
-=======
   if (botaoResetarderrota) botaoResetarderrota.addEventListener('click', resetarJogo_D);
   if (botaoResetarvitoria) botaoResetarvitoria.addEventListener('click', resetarJogo_V);
->>>>>>> 9a838c78f9718b1d4b5fdb5457764131edd3be37
 }
 
 function resetarJogo() {
@@ -144,6 +123,12 @@ function resetarJogo() {
   if (tablero) {
     tablero.classList.remove('bloqueado');
     tablero.innerText = '';
+
+somDerrota.pause();
+somDerrota.currentTime = 0;
+
+somVitoria.pause();
+somVitoria.currentTime = 0;
   }
   
   preparparPartida();
@@ -321,11 +306,16 @@ function criarTabela() {
           document.getElementById("barcos").innerText = "Barcos: " + qtd_barcos;
 
           if (pontuacao == 100 ) {
-            pararTemporizador();
-            musica.pause();
-            somTensao.pause();
-            somVitoria.play();
-            mostrarVitoria();
+          jogoAtivo = false;
+    pararTemporizador();
+    musica.pause();
+    musica.currentTime = 0;
+    somTensao.pause();
+    somTensao.currentTime = 0;
+    somVitoria.currentTime = 0;
+    somVitoria.play();
+
+    mostrarVitoria();
           }
         } else {
           qtd_aguas -= 1;
@@ -477,16 +467,20 @@ function jogadaMaquina() {
 }
 
 if (vidasMaquina === 0) {
+    jogoAtivo = false;
     pararTemporizador();
 
     musica.pause();
     musica.currentTime = 0;
 
+    somTensao.pause();
+    somTensao.currentTime = 0;
+
     somVitoria.play();
 
     mostrarVitoria();
-    encerrarPartida();
     return;
+
 }
 }
 
@@ -508,7 +502,6 @@ if (pontos) {
   }, 500);
 }
 
-<<<<<<< HEAD
 function resetarJogo_Vi() {
     const telaVitoria = document.getElementById("vitoria");
 
@@ -528,7 +521,6 @@ function resetarJogo_Dr() {
 
     resetarJogo();
 }
-=======
 
 function resetarJogo_D() {
   jogoAtivo = true;
@@ -554,7 +546,7 @@ function resetarJogo_D() {
 
   document.getElementById('jogadas').innerText = 'Jogadas: 0';
   document.getElementById('pontuacao').innerText = 'Pontuação: 0';
-
+   resetarJogo();
 }
 
 function resetarJogo_V() {
@@ -581,5 +573,12 @@ function resetarJogo_V() {
 
   document.getElementById('jogadas').innerText = 'Jogadas: 0';
   document.getElementById('pontuacao').innerText = 'Pontuação: 0';
+
+ somDerrota.pause();
+somDerrota.currentTime = 0;
+
+somVitoria.play();
+
+ resetarJogo();
 }
->>>>>>> 9a838c78f9718b1d4b5fdb5457764131edd3be37
+

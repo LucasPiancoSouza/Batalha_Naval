@@ -700,16 +700,6 @@ nav{
   color: rgb(255, 255, 255);
   font-weight: bold;
 }
-<<<<<<< HEAD
-
-.vitoria1 > div,
-.derrota1 > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
 .btn-resetar_Dr,
 .btn-resetar_Vi {
     width: 250px;
@@ -724,35 +714,6 @@ nav{
     transition: 0.3s;
 }
 
-.btn-resetar:hover {
-    transform: scale(1.05);
-    background-color: rgba(255, 0, 0, 0.9);
-=======
-.btn-resetar_Dr {
-width: min(100%, 170px);
-  min-height: 3vh;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: var(--button-radius);
-  background-color: rgba(220, 0, 0, 0.8);
-  color: white;
-  font-family: var(--fonte-paragrafo);
-  font-size: 1rem;
-  cursor: pointer;
-
-}
-.btn-resetar_Vi {
-width: min(100%, 170px);
-  min-height: 3vh;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: var(--button-radius);
-  background-color: rgba(220, 0, 0, 0.8);
-  color: white;
-  font-family: var(--fonte-paragrafo);
-  font-size: 1rem;
-  cursor: pointer;
-}
 #container_vitoria,
 #container_derrota {
   display: flex;
@@ -761,5 +722,5 @@ width: min(100%, 170px);
   align-items: center;
   gap: 1.5rem;
   text-align: center;
->>>>>>> 9a838c78f9718b1d4b5fdb5457764131edd3be37
+
 }
