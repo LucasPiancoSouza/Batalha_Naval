@@ -28,6 +28,6 @@ alert("Seu nome precisa ter pelo menos 4 caracteres.");
 return;
 }
 localStorage.setItem ("nome", nome);
-window.location.href = "Menu_jogo/index.html";
+window.location.href = "../Menu_jogo/index.html";
 
 }
