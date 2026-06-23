@@ -458,6 +458,12 @@ function jogadaMaquina() {
     if (item === "barco") {
     pontuacaoMaquina += 10;
     barcosMaquina++;
+
+    if (barcosMaquina >= totalBarcosInicial) {
+        encerrarPartida();
+        mostrarDerrota();
+        return;
+    }
 }
 
 if (vidasMaquina === 0) {
