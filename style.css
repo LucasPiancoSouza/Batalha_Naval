@@ -16,7 +16,7 @@ body {
             rgba(0,0,0,0.40),
             rgba(0,0,0,0.40)
         ),
-        url(img/fundo_tela_de_login.png);
+        url(Imagens/img/fundo_tela_de_login.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

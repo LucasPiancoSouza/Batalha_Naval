@@ -30,7 +30,7 @@ body {
 body {
   min-height: 100vh;
   font-family: var(--fonte-paragrafo);
-  background-image: url(../img/fundo_tela_do_jogo.png);
+  background-image: url(../Imagens/img/fundo_tela_do_jogo.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
